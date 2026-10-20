@@ -31,3 +31,20 @@ Definitions are tied to the pinned RDKit version. Counts depend on its aromatici
 | `report.md` | Human-readable results and figures |
 
 The similarity threshold of 0.8 in the summary is a descriptive reference point, not a validated chemical or applicability boundary. Exact fingerprint similarity of one is not proof of molecular identity. No per-compound predictions or new structures are exported.
+
+## Split-audit outputs
+
+The separate `audit/` directory contains `assignments.csv`, `audit.json`, and `report.md`. These describe partition membership, not additional model results.
+
+| Assignment field | Meaning |
+| --- | --- |
+| `split` | `random` or `scaffold`, using the existing split rules |
+| `source_row_index` | Zero-based index among input data records |
+| `source_data_row` | One-based position among input data records, excluding the header; not a physical text-line number |
+| `partition` | Outer `train` or `test` membership |
+| `inner_validation_fold` | Zero-based held-out fold for a training row; blank for an outer test row |
+| `canonical_group_sha256` | SHA-256 of the namespaced canonical isomeric identity group |
+| `scaffold_group_sha256` | SHA-256 of the namespaced nonchiral scaffold group, including the declared acyclic group |
+| `acyclic_scaffold` | Whether the record belongs to the shared `<ACYCLIC>` group |
+
+Hashes support equality comparisons and joins; they do not anonymize molecular structures. The JSON records the input and reference hashes, source-code hashes, runtime versions, index conventions, counts, and outer/inner overlap checks. A run with `--without-reference` explicitly states that the assignments were not compared with a recorded baseline. Raw structures, target values, and predictions are omitted.

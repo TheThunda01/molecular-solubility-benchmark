@@ -1,0 +1,162 @@
+{
+  "assignment_rows": 2256,
+  "exported_raw_smiles": false,
+  "exported_target_values": false,
+  "feature_names": [
+    "molecular_weight",
+    "calculated_logp",
+    "polar_surface_area",
+    "hydrogen_bond_donors",
+    "hydrogen_bond_acceptors",
+    "rotatable_bonds",
+    "ring_count",
+    "fraction_csp3",
+    "aromatic_heavy_atom_fraction"
+  ],
+  "implementation_sha256": {
+    "audit.py": "9692bc44bd4700d65ddd97df9eac38bc1896620988cf2c2c036aa9d70d7f1094",
+    "data.py": "7b527a27defe0f8da317a131808344554b2c126092fae0c168f08962ad446d94",
+    "splitting.py": "95319ed43a801df0b382dda5d87eeb4514e68e1d53b9a3cbbea71288f40114b2"
+  },
+  "index_convention": "source_row_index is zero-based; source_data_row is one-based among data records, excluding the header (not a physical line number); inner_validation_fold is zero-based and blank for outer test rows",
+  "input": {
+    "name": "delaney_subset.csv",
+    "rows": 1128,
+    "sha256": "e8865f1c10fdd2f5fb46d16075fccbaba388b85f57bebef89261750b3cbb9a77"
+  },
+  "limits": "Checks partition membership, grouping and recorded fingerprints; not measurement validity, model accuracy, independent chemistry or an anonymity guarantee.",
+  "operation": "split_audit_no_model_fitting",
+  "python_version": "3.12.14",
+  "reference": {
+    "checked": true,
+    "name": "split_manifest.json",
+    "sha256": "7b8c94f1e985c5968306806a7fe5ea4d3cb7bbafa8f96bbad047945a4abcca88"
+  },
+  "schema_version": "1.0",
+  "seed": 2026,
+  "splits": {
+    "random": {
+      "canonical_identity_overlap_count": 0,
+      "grouping": "canonical_isomeric_smiles",
+      "inner_folds": [
+        {
+          "canonical_identity_overlap_count": 0,
+          "fit_indices_sha256": "f03124639e00c81240356670860065f1ac38201523014175e4d1cea8590d157e",
+          "fit_rows": 721,
+          "group_overlap_count": 0,
+          "validation_fold": 0,
+          "validation_indices_sha256": "6492eae5b52543cef9f4873d5636757869b4e7cb0a6414e624b8130e14a550eb",
+          "validation_rows": 181
+        },
+        {
+          "canonical_identity_overlap_count": 0,
+          "fit_indices_sha256": "7d4c6df02cb788e22ea53e8ff59f303429a6cec7aacd9d4bd8b08f95da5fee0a",
+          "fit_rows": 721,
+          "group_overlap_count": 0,
+          "validation_fold": 1,
+          "validation_indices_sha256": "ee356f291d5b270958c6e96984fe373b6c9962881111c047d4d7c1d09a5a1da8",
+          "validation_rows": 181
+        },
+        {
+          "canonical_identity_overlap_count": 0,
+          "fit_indices_sha256": "a72b8e725a3f077b02bcd910cbb25200f9a03747d25c99b2594bb36f4533e13d",
+          "fit_rows": 722,
+          "group_overlap_count": 0,
+          "validation_fold": 2,
+          "validation_indices_sha256": "64d79255bf9c82622046efc3c7197dd403ee50b9278f3f74cbb015228f6a4841",
+          "validation_rows": 180
+        },
+        {
+          "canonical_identity_overlap_count": 0,
+          "fit_indices_sha256": "03785a1d3aa8254b84a1d140cd6474dbaced0e0f1ed196ea7c5af95badd0d56c",
+          "fit_rows": 722,
+          "group_overlap_count": 0,
+          "validation_fold": 3,
+          "validation_indices_sha256": "35645d8a05e42e9717c8f36e2963220b0553571f216673905efdff38429a5583",
+          "validation_rows": 180
+        },
+        {
+          "canonical_identity_overlap_count": 0,
+          "fit_indices_sha256": "b778988abd45472902eea86a5d75186b9d0ac5d6fe82c99ce11c684988d522b7",
+          "fit_rows": 722,
+          "group_overlap_count": 0,
+          "validation_fold": 4,
+          "validation_indices_sha256": "df0a416518cb94b67c5c724e59727f7573c78993255269acda7a8f33a9ea99bb",
+          "validation_rows": 180
+        }
+      ],
+      "scaffold_overlap_count": 44,
+      "test_groups": 224,
+      "test_indices_sha256": "520ab2ce905d3d4e1158cd0dd8ad038c2ed58281e7eb0c8caa447dde8bc34b28",
+      "test_rows": 226,
+      "test_scaffold_overlap_fraction": 0.8141592920353983,
+      "train_groups": 893,
+      "train_indices_sha256": "18dad4b764b58cc01d0d77edf350ed55f5f7ed9a4b49c28a0169652221286906",
+      "train_rows": 902
+    },
+    "scaffold": {
+      "canonical_identity_overlap_count": 0,
+      "grouping": "nonchiral_murcko_scaffold_with_shared_acyclic_group",
+      "inner_folds": [
+        {
+          "canonical_identity_overlap_count": 0,
+          "fit_indices_sha256": "08dcdedb7f785ecd527b71cc37558bf708a229eb8c1d61f358bf2093c75abc11",
+          "fit_rows": 585,
+          "group_overlap_count": 0,
+          "validation_fold": 0,
+          "validation_indices_sha256": "453f8e749cd896638ce8b3808917d16e9b489de027d7b5656c47796c0cf8405f",
+          "validation_rows": 317
+        },
+        {
+          "canonical_identity_overlap_count": 0,
+          "fit_indices_sha256": "ffed88658f0715f4e437ccb75fb6d70d4a515cd4f5da907b3c8f9c4d8db102aa",
+          "fit_rows": 648,
+          "group_overlap_count": 0,
+          "validation_fold": 1,
+          "validation_indices_sha256": "ca2fd1473ec943bb0b51edda9da9757eb0039dabb553707e5bf1ac49ffd711c4",
+          "validation_rows": 254
+        },
+        {
+          "canonical_identity_overlap_count": 0,
+          "fit_indices_sha256": "7b4084cf9ee907de5aed57ff534b6a8d9a9bb2486e662ef7dba19c8028c6ab43",
+          "fit_rows": 792,
+          "group_overlap_count": 0,
+          "validation_fold": 2,
+          "validation_indices_sha256": "ca8312c40e8d17b8cb0a894c5e99ce561bfdc5027689fe1bc8f17aa2e505c1d9",
+          "validation_rows": 110
+        },
+        {
+          "canonical_identity_overlap_count": 0,
+          "fit_indices_sha256": "a68875f96ef6fff99685d44076065ab1b8fd8cd0f3ff195ec92dc8222d466021",
+          "fit_rows": 792,
+          "group_overlap_count": 0,
+          "validation_fold": 3,
+          "validation_indices_sha256": "a7425ddddff707e04e5376953e7f5470e5e8256bed21a0c7745f62ed34051271",
+          "validation_rows": 110
+        },
+        {
+          "canonical_identity_overlap_count": 0,
+          "fit_indices_sha256": "5ecb4095a2b545f50b74693a8ad92fd65806941b35b9f9084e5e34a9c83455b1",
+          "fit_rows": 791,
+          "group_overlap_count": 0,
+          "validation_fold": 4,
+          "validation_indices_sha256": "ed3e34dc63c41dbf36aa5557984697d81e24d6aa50f2b17160535ad078f97016",
+          "validation_rows": 111
+        }
+      ],
+      "scaffold_overlap_count": 0,
+      "test_groups": 210,
+      "test_indices_sha256": "75b71d71958ab9a04d3a333beea1de5896e1d76a1ac5ea60e82e03e1c684d0dd",
+      "test_rows": 226,
+      "test_scaffold_overlap_fraction": 0.0,
+      "train_groups": 59,
+      "train_indices_sha256": "c1204b923aa7614c86e7ed027ed6f3ef12ad3e633cafcdad1ba5b45d8048415e",
+      "train_rows": 902
+    }
+  },
+  "versions": {
+    "numpy": "2.3.5",
+    "rdkit": "2025.9.1",
+    "scikit-learn": "1.8.0"
+  }
+}

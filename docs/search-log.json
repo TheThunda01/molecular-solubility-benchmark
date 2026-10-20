@@ -1,0 +1,527 @@
+{
+  "search_date": "2026-10-20",
+  "scope": "Bounded rapid review for a reproducible, inspectable split-assignment export in an existing retrospective aqueous-solubility benchmark. Recent window 2022-01-01 through 2026-10-20; foundational data/benchmark studies retained when directly required.",
+  "inclusion_criteria": [
+    "Primary studies addressing solubility dataset curation/evaluation and foundational papers for the included benchmark",
+    "Official versioned software documentation needed to interpret grouped cross-validation or preprocessing leakage",
+    "A concrete consequence for documenting, checking, or exporting existing partitions"
+  ],
+  "exclusion_criteria": [
+    "Formulation, synthesis, clinical delivery, and protein-solubility experiments outside small-molecule benchmark evaluation",
+    "Architecture comparisons that do not change this bounded audit implementation",
+    "Unverifiable quantitative claims, review-level performance estimates, or new datasets requiring changed endpoint/licensing assumptions"
+  ],
+  "searches": [
+    {
+      "id": "PM1",
+      "source": "PubMed connector",
+      "query": "(\"aqueous solubility\"[Title/Abstract] OR \"molecular property prediction\"[Title/Abstract]) AND (\"scaffold split\"[Title/Abstract] OR \"data leakage\"[Title/Abstract] OR reproducibility[Title/Abstract])",
+      "date_from": "2022/01/01",
+      "date_to": "2026/10/20",
+      "date_type": "publication",
+      "sort": "publication_date",
+      "offset": 0,
+      "max_results": 8,
+      "max_abstract_chars": 4000,
+      "max_nested_results": 5,
+      "query_translation": "(\"aqueous solubility\"[Title/Abstract] OR \"molecular property prediction\"[Title/Abstract]) AND (\"scaffold split\"[Title/Abstract] OR \"data leakage\"[Title/Abstract] OR \"reproducibility\"[Title/Abstract]) AND 2022/01/01:2026/10/20[Date - Publication]",
+      "total_results": 40,
+      "returned_count": 8,
+      "retrieved_pmids": [
+        "42425002",
+        "42734783",
+        "42679478",
+        "42641999",
+        "42670248",
+        "42865649",
+        "42824424",
+        "42797338"
+      ],
+      "next_offset": 8,
+      "has_more": true,
+      "pagination_limited": false,
+      "selection_limit": "Screen this first returned page only; no claim of complete retrieval",
+      "nested_metadata_truncation": [
+        "articles.42425002.authors",
+        "articles.42425002.mesh_terms",
+        "articles.42734783.mesh_terms",
+        "articles.42679478.mesh_terms",
+        "articles.42641999.mesh_terms",
+        "articles.42670248.authors",
+        "articles.42670248.mesh_terms",
+        "articles.42797338.authors",
+        "articles.42797338.keywords"
+      ]
+    },
+    {
+      "id": "PM2",
+      "source": "PubMed connector",
+      "query": "\"scaffold split\"[Title/Abstract] AND (\"molecular property\"[Title/Abstract] OR solubility[Title/Abstract] OR benchmark[Title/Abstract])",
+      "date_from": "2022/01/01",
+      "date_to": "2026/10/20",
+      "date_type": "publication",
+      "sort": "relevance",
+      "offset": 0,
+      "max_results": 8,
+      "max_abstract_chars": 5000,
+      "max_nested_results": 5,
+      "query_translation": "\"scaffold split\"[Title/Abstract] AND (\"molecular property\"[Title/Abstract] OR \"solubility\"[Title/Abstract] OR \"benchmark\"[Title/Abstract]) AND 2022/01/01:2026/10/20[Date - Publication]",
+      "total_results": 15,
+      "returned_count": 8,
+      "retrieved_pmids": [
+        "41985263",
+        "42045436",
+        "41708784",
+        "38778388",
+        "42398307",
+        "40877984",
+        "42689483",
+        "42438047"
+      ],
+      "next_offset": 8,
+      "has_more": true,
+      "pagination_limited": false,
+      "selection_limit": "Screen this first returned page only; no claim of complete retrieval",
+      "nested_metadata_truncation": [
+        "articles.41985263.authors",
+        "articles.41985263.mesh_terms",
+        "articles.42045436.keywords",
+        "articles.41708784.authors",
+        "articles.42398307.keywords",
+        "articles.42438047.keywords"
+      ]
+    },
+    {
+      "id": "PM3",
+      "source": "PubMed connector",
+      "query": "\"solubility\"[Title] AND (\"data quality\"[Title/Abstract] OR \"data curation\"[Title/Abstract] OR reproducibility[Title/Abstract])",
+      "date_from": "2022/01/01",
+      "date_to": "2026/10/20",
+      "date_type": "publication",
+      "sort": "relevance",
+      "offset": 0,
+      "max_results": 8,
+      "max_abstract_chars": 5000,
+      "max_nested_results": 5,
+      "query_translation": "\"solubility\"[Title] AND (\"data quality\"[Title/Abstract] OR \"data curation\"[Title/Abstract] OR \"reproducibility\"[Title/Abstract]) AND 2022/01/01:2026/10/20[Date - Publication]",
+      "total_results": 26,
+      "returned_count": 8,
+      "retrieved_pmids": [
+        "41006785",
+        "37150980",
+        "41791814",
+        "38346601",
+        "34662708",
+        "35241693",
+        "36561308",
+        "42607196"
+      ],
+      "next_offset": 8,
+      "has_more": true,
+      "pagination_limited": false,
+      "selection_limit": "Screen this first returned page only; no claim of complete retrieval",
+      "nested_metadata_truncation": [
+        "articles.37150980.authors",
+        "articles.37150980.mesh_terms",
+        "articles.37150980.keywords",
+        "articles.41791814.authors",
+        "articles.41791814.mesh_terms",
+        "articles.38346601.authors",
+        "articles.38346601.mesh_terms",
+        "articles.38346601.keywords",
+        "articles.34662708.authors",
+        "articles.34662708.keywords",
+        "articles.35241693.authors",
+        "articles.36561308.authors",
+        "articles.36561308.mesh_terms",
+        "articles.42607196.authors",
+        "articles.42607196.keywords"
+      ]
+    },
+    {
+      "id": "PM4",
+      "source": "PubMed connector",
+      "query": "\"Will we ever be able to accurately predict solubility\"[Title]",
+      "date_from": "2022/01/01",
+      "date_to": "2026/10/20",
+      "date_type": "publication",
+      "sort": "relevance",
+      "offset": 0,
+      "max_results": 5,
+      "max_abstract_chars": 5000,
+      "max_nested_results": 5,
+      "query_translation": "\"Will we ever be able to accurately predict solubility\"[Title] AND 2022/01/01:2026/10/20[pdat]",
+      "total_results": 0,
+      "returned_count": 0,
+      "retrieved_pmids": [],
+      "next_offset": null,
+      "has_more": false,
+      "pagination_limited": false,
+      "selection_limit": "Screen this first returned page only; no claim of complete retrieval",
+      "nested_metadata_truncation": []
+    },
+    {
+      "id": "PM5",
+      "source": "PubMed connector",
+      "query": "\"ESOL\"[Title] AND Delaney[Author]",
+      "date_from": null,
+      "date_to": null,
+      "date_type": "publication",
+      "sort": "relevance",
+      "offset": 0,
+      "max_results": 5,
+      "max_abstract_chars": 5000,
+      "max_nested_results": 5,
+      "query_translation": "\"ESOL\"[Title] AND Delaney[Author]",
+      "total_results": 1,
+      "returned_count": 1,
+      "retrieved_pmids": [
+        "15154768"
+      ],
+      "next_offset": null,
+      "has_more": false,
+      "pagination_limited": false,
+      "selection_limit": "Screen this first returned page only; no claim of complete retrieval",
+      "nested_metadata_truncation": []
+    },
+    {
+      "id": "PM6",
+      "source": "PubMed connector",
+      "query": "\"MoleculeNet\"[Title] AND Wu[Author]",
+      "date_from": null,
+      "date_to": null,
+      "date_type": "publication",
+      "sort": "relevance",
+      "offset": 0,
+      "max_results": 5,
+      "max_abstract_chars": 5000,
+      "max_nested_results": 5,
+      "query_translation": "\"MoleculeNet\"[Title] AND Wu[Author]",
+      "total_results": 1,
+      "returned_count": 1,
+      "retrieved_pmids": [
+        "29629118"
+      ],
+      "next_offset": null,
+      "has_more": false,
+      "pagination_limited": false,
+      "selection_limit": "Screen this first returned page only; no claim of complete retrieval",
+      "nested_metadata_truncation": [
+        "articles.29629118.authors"
+      ]
+    },
+    {
+      "id": "WEB1",
+      "source": "Supplementary web search",
+      "query": "\"10.1038/s41597-024-03105-6\"",
+      "total_results": null,
+      "retrieved_count": null,
+      "selected_urls": [
+        "https://www.nature.com/articles/s41597-024-03105-6",
+        "https://pubmed.ncbi.nlm.nih.gov/38499581/"
+      ],
+      "limit": "Only DOI-identifying official journal/PubMed hits used; web total not exposed"
+    },
+    {
+      "id": "WEB2",
+      "source": "Supplementary web search",
+      "query": "site.scikit-learn.org/1.8 \"GroupKFold\" \"non-overlapping groups\"",
+      "total_results": null,
+      "retrieved_count": null,
+      "selected_urls": [
+        "https://scikit-learn.org/1.8/modules/generated/sklearn.model_selection.GroupKFold.html"
+      ],
+      "limit": "Official versioned documentation only; web total not exposed"
+    },
+    {
+      "id": "DOC1",
+      "source": "Official documentation direct retrieval",
+      "query": "https://scikit-learn.org/1.8/modules/generated/sklearn.model_selection.GroupKFold.html",
+      "version": "1.8.0",
+      "total_results": null,
+      "pages_inspected": 1
+    },
+    {
+      "id": "DOC2",
+      "source": "Official documentation direct retrieval",
+      "query": "https://scikit-learn.org/1.8/common_pitfalls.html",
+      "version": "1.8.0",
+      "total_results": null,
+      "pages_inspected": 1
+    }
+  ],
+  "retrievals": [
+    {
+      "pmid": "38499581",
+      "method": "PubMed get_articles after DOI-backed supplementary discovery",
+      "returned": true,
+      "note": "PM4 exact-title search returned zero; this is a recovery, not an extra search result"
+    },
+    {
+      "pmcid": "PMC8894363",
+      "pmid": "35241693",
+      "method": "PubMed rights-eligible full text",
+      "offsets": [
+        0,
+        35000
+      ],
+      "returned_char_counts": [
+        35000,
+        18446
+      ],
+      "total_text_chars": 53446,
+      "complete_retrieval": true,
+      "appraisal": "Relevant methods, curation choices, evaluation design, and limitations; not a numerical reproduction"
+    },
+    {
+      "pmcid": "PMC5868307",
+      "pmid": "29629118",
+      "method": "PubMed rights-eligible full text",
+      "offsets": [
+        0,
+        35000
+      ],
+      "returned_char_counts": [
+        35000,
+        29082
+      ],
+      "total_text_chars": 64082,
+      "complete_retrieval": true,
+      "appraisal": "Dataset and splitting/metric descriptions; no claimed replication of their reported model scores"
+    },
+    {
+      "pmcid": "PMC10948805",
+      "pmid": "38499581",
+      "method": "PubMed rights-eligible full text",
+      "offsets": [
+        0,
+        50000
+      ],
+      "returned_char_counts": [
+        50000,
+        20293
+      ],
+      "total_text_chars": 70293,
+      "complete_retrieval": true,
+      "appraisal": "Data overlap, endpoint/condition differences, and evaluation limitations"
+    },
+    {
+      "pmid": "15154768",
+      "method": "PubMed citation and abstract",
+      "complete_full_text_retrieval": false,
+      "appraisal": "Abstract-only source verification; no independent appraisal of full model-development details"
+    }
+  ],
+  "screening": [
+    {
+      "pmid": "42425002",
+      "title": "Biotransformation-electrochemistry coupling for multiplexed on-site detection of hydrophobic polycyclic aromatic pollutants.",
+      "publication_date": "2026 Nov 15",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42734783",
+      "title": "Withaferin A-Loaded CS/β-GP Thermosensitive Hydrogel Attenuates Diabetes-Associated Renal Injury in a Diabetic Rat Model.",
+      "publication_date": "2026 Nov",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42679478",
+      "title": "A fluorescence-based high-throughput assay enabling engineering of BsPPS, a unique phenolic compound-phosphorylating enzyme from Bacillus subtilis.",
+      "publication_date": "2026 Oct 30",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42641999",
+      "title": "A microfluidic and mechanistic modeling approach to enhance oral bioavailability of cannabidiol via poloxamer-coated camel milk exosomes.",
+      "publication_date": "2026 Oct 05",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42670248",
+      "title": "2-Deoxyglucose Dendrimer-Enabled Niclosamide Delivery to FRβ-Expressing Macrophages Alleviates Endometriosis Progression and Associated Hyperalgesia.",
+      "publication_date": "2026 Oct",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42865649",
+      "title": "Traditional Chinese medicine (TCM)-based nanoformulations for cancer therapy: antitumor mechanisms, challenges, and future directions.",
+      "publication_date": "2026",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42824424",
+      "title": "Next-generation nanomedicine for cancer therapy: advances, challenges, and future perspectives.",
+      "publication_date": "2026",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42797338",
+      "title": "Surface-Engineered Phytochemical Nanomedicines for Postmenopausal Osteoporosis: Skeletal Targeting, Imaging-Supported Evaluation, and Therapeutic Performance.",
+      "publication_date": "2026 Sep 16",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "41985263",
+      "title": "Accurate and interpretable ADMET prediction: Integrating structural, geometric, and global molecular context representations.",
+      "publication_date": "2026 Jul 05",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42045436",
+      "title": "Physics-informed deep learning for molecular solubility prediction: integrating thermodynamic constraints with neural network architectures.",
+      "publication_date": "2026 Apr 27",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "41708784",
+      "title": "A conformational benchmark for optical property prediction with solvent-aware graph neural networks.",
+      "publication_date": "2026 Feb 18",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "38778388",
+      "title": "MolPROP: Molecular Property prediction with multimodal language and graph fusion.",
+      "publication_date": "2024 May 22",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42398307",
+      "title": "MARS: Multi-anchor reasoning for reliable toxicity prediction under distribution shift.",
+      "publication_date": "2026 Oct",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "40877984",
+      "title": "Systematic benchmarking of 13 AI methods for predicting cyclic peptide membrane permeability.",
+      "publication_date": "2025 Aug 28",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42689483",
+      "title": "PKP-Diffmol: A Physicochemical Knowledge-Prompt Encoding and Latent Diffusion Framework for Molecular Property Prediction.",
+      "publication_date": "2026 Sep 14",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42438047",
+      "title": "Combined molecular fingerprint and descriptor features enable classical machine learning to match deep learning performance across the Tox21 toxicity panel.",
+      "publication_date": "2026 Jul 25",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "41006785",
+      "title": "High-throughput proteome integral solubility alteration assay for low cell input using One-Tip.",
+      "publication_date": "2025 Sep 26",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "37150980",
+      "title": "Targeted Approach to Enhance the Solubility of Weakly Soluble Drugs by Nanocrystal Technology.",
+      "publication_date": "2023",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "41791814",
+      "title": "DrPISA: Deep eutectic solvent-assisted reverse proteome-integrated solubility alteration for high-sensitivity drug target identification.",
+      "publication_date": "2026 Apr 22",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "38346601",
+      "title": "Thermodynamic solubility measurement without chemical analysis.",
+      "publication_date": "2024 Mar 25",
+      "decision": "exclude",
+      "reason": "Measurement-method/consensus context is relevant to endpoint limits but not retained in this six-source implementation review"
+    },
+    {
+      "pmid": "34662708",
+      "title": "UNGAP best practice for improving solubility data quality of orally administered drugs.",
+      "publication_date": "2022 Jan 01",
+      "decision": "exclude",
+      "reason": "Measurement-method/consensus context is relevant to endpoint limits but not retained in this six-source implementation review"
+    },
+    {
+      "pmid": "35241693",
+      "title": "Boosting the predictive performance with aqueous solubility dataset curation.",
+      "publication_date": "2022 Mar 03",
+      "decision": "include",
+      "reason": "Primary recent data-curation study relevant to identity groups and source consistency"
+    },
+    {
+      "pmid": "36561308",
+      "title": "Design and Optimization of Rivaroxaban-Cyclodextrin-Polymer Triple Complex Formulation with Improved Solubility.",
+      "publication_date": "2022",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "42607196",
+      "title": "Overcoming Uncontrolled Nucleation and Cesium Salt Solubility Limits in Scalable Perovskite Deposition through All-Inorganic Perovskite Nanocrystal Seeding.",
+      "publication_date": "2026 Aug 26",
+      "decision": "exclude",
+      "reason": "Outside the focused partition-audit question, or a new predictive architecture without a needed implementation consequence for this bounded change"
+    },
+    {
+      "pmid": "15154768",
+      "title": "ESOL: estimating aqueous solubility directly from molecular structure.",
+      "publication_date": "2004",
+      "decision": "include",
+      "reason": "Foundational source study for the included measured-solubility data"
+    },
+    {
+      "pmid": "29629118",
+      "title": "MoleculeNet: a benchmark for molecular machine learning.",
+      "publication_date": "2018 Jan 14",
+      "decision": "include",
+      "reason": "Foundational benchmark paper defining split/metric reporting context"
+    },
+    {
+      "pmid": "38499581",
+      "title": "Will we ever be able to accurately predict solubility?",
+      "publication_date": "2024 Mar 18",
+      "decision": "include",
+      "reason": "Primary recent solubility data-quality/external-evaluation study; recovered after connector exact-title zero result"
+    }
+  ],
+  "counts": {
+    "recent_search_result_totals": [
+      40,
+      15,
+      26,
+      0
+    ],
+    "note": "Result totals are per query and must not be summed as unique publications",
+    "unique_pubmed_records_screened": 27,
+    "retained_pubmed_papers": 4,
+    "retained_official_documentation_pages": 2,
+    "retained_sources_total": 6
+  },
+  "limitations": [
+    "Non-exhaustive first-page screening; unreturned pages of PM1-PM3 were not screened",
+    "Publication date filter can return records with later print-issue labels; none of those records was retained on that basis",
+    "Author/MeSH nested metadata lists were capped; full author enumeration was not needed for screening",
+    "A direct Nature page open was blocked by its redirect; the matching paper was appraised through permitted PMC retrieval",
+    "No effect-size synthesis or meta-analysis; no claim that all relevant literature was found",
+    "No external repository code copied or analogous GitHub implementation inspected in this change; official scikit-learn documentation was pinned to version 1.8.0"
+  ]
+}

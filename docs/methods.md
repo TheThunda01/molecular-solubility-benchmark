@@ -36,3 +36,11 @@ A second diagnostic reports nearest-training Tanimoto similarity using 2,048-bit
 ## Limits
 
 Only one outer partition per strategy is evaluated. The model results have no confidence interval and should not be generalized to all split seeds, compounds, measurement conditions, or laboratories. The distance groups reuse the held-out errors for description, not for choosing a model or acceptance threshold. The work includes no potency, exposure, toxicity, treatment, molecular design, or synthesis endpoint. [References](references.md) distinguish the supporting literature from what this implementation actually tests.
+
+## Split-audit export
+
+`python -m solubility_benchmark.audit` reuses the input reader, outer split functions, and training-fold function. It reconstructs assignments without fitting models or using target values to choose partitions. The input reader still validates finite targets because the audit accepts the same benchmark table. The default run checks the existing `results/split_manifest.json`; `--without-reference` explicitly records that no reference was checked.
+
+The CSV contains one row per input record and split strategy. `source_row_index` is zero-based; `source_data_row` counts data records from one, excluding the header, and is not a physical line number. Each training row receives exactly one zero-based inner validation-fold number. Outer test rows have a blank fold. Canonical-identity and scaffold hashes support joins and overlap checks, but are not anonymization or proof of chemical novelty.
+
+The JSON receipt records input/reference/code hashes, runtime versions, group counts, and fold fingerprints. No raw SMILES, targets, or predictions are exported. Validation finishes before staged files replace the report set; an I/O failure during replacement can still leave a partial set. The [practical-use guide](practical-use.md) explains the operator's responsibilities and the [rapid evidence review](literature-review.md) connects these choices to their sources.
