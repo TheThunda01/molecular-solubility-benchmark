@@ -30,7 +30,7 @@ Definitions are tied to the pinned RDKit version. Counts depend on its aromatici
 | `analysis.json` | Versions, selected hyperparameters, metric rows, and interpretation limits |
 | `report.md` | Human-readable results and figures |
 
-The similarity threshold of 0.8 in the summary is a descriptive reference point, not a validated chemical or applicability boundary. Exact fingerprint similarity of one is not proof of molecular identity. No per-compound predictions or new structures are exported.
+The similarity threshold of 0.8 in the summary is a descriptive reference point, not a validated chemical or applicability boundary. Exact fingerprint similarity of one is not proof of molecular identity. These original result files contain aggregate metrics and diagnostics; the separate round 2 prediction bundle is described below. No new structures are generated.
 
 ## Split-audit outputs
 
@@ -48,3 +48,9 @@ The separate `audit/` directory contains `assignments.csv`, `audit.json`, and `r
 | `acyclic_scaffold` | Whether the record belongs to the shared `<ACYCLIC>` group |
 
 Hashes support equality comparisons and joins; they do not anonymize molecular structures. The JSON records the input and reference hashes, source-code hashes, runtime versions, index conventions, counts, and outer/inner overlap checks. A run with `--without-reference` explicitly states that the assignments were not compared with a recorded baseline. Raw structures, target values, and predictions are omitted.
+
+## Frozen prediction bundle
+
+The [checked example](../examples/heldout-predictions/README.md) contains 1,356 rows. The unique key is `(split, model, source_row_index)`. The CSV fields are `split`, `model`, `source_row_index`, `source_data_row`, `partition` (always `test`), `observed_log10_mol_l`, and `predicted_log10_mol_l`. Row conventions match the split audit. There are no training-role rows or raw SMILES; observed values are intentionally included for metric reconstruction.
+
+`metrics.json` holds the six reconstructed metric rows and comparison tolerances. `receipt.json` records source/implementation hashes, selected hyperparameters, versions, and output-file hashes/byte counts. The source record may be training data in the other strategy, so this combined file is not a label-blind training resource. It inherits the source data's [CC BY-NC 4.0 conditions](../data/LICENSE.md).

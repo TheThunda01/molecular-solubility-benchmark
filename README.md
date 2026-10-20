@@ -17,6 +17,7 @@ The goal is to understand evaluation choices, not to design molecules or support
 - Reports RMSE, MAE, R², structural similarity, and distance-binned errors with group counts.
 - Records data provenance, source hashes, software versions, and fixed split fingerprints.
 - Adds an offline **split audit**: row-level outer roles and inner validation folds, checked against the recorded reference without fitting a model or exporting target values.
+- Exports **frozen held-out predictions** and verifies their row identities, observed values, and six reconstructed metric rows independently of model fitting.
 
 The new [audit report](audit/report.md) and [practical-use guide](docs/practical-use.md) explain how to carry the same partitions into another notebook.
 
@@ -35,9 +36,12 @@ python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 python -m solubility_benchmark
 python -m solubility_benchmark.audit
+python -m solubility_benchmark.predictions verify examples/heldout-predictions
 ```
 
-The attributed two-column data subset is included, so both commands work offline after installation. The analysis writes `results/`; the audit writes `audit/`. The optional `python scripts/rebuild_dataset.py` downloads and verifies the original pinned sources before recreating the subset. For a numerical reproduction check that leaves the recorded results in place, run `python scripts/check_reproduction.py`.
+The attributed two-column data subset is included, so these commands work offline after installation. The analysis writes `results/`; the audit writes `audit/`. To create a fresh prediction bundle, run `python -m solubility_benchmark.predictions export --output predictions-001`, then verify it with `python -m solubility_benchmark.predictions verify predictions-001`. The destination must not exist. Export refits the already-recorded configurations on their training partitions; verification does not fit anything. Neither command replaces the recorded results.
+
+The optional `python scripts/rebuild_dataset.py` downloads and verifies the original pinned sources before recreating the subset. For a full numerical reproduction check that leaves the recorded results in place, run `python scripts/check_reproduction.py`.
 
 ## Example results
 
@@ -52,11 +56,15 @@ Errors are in **log10 molar-solubility units**. Both partitions contain 902 trai
 
 The audit exports **2,256 assignment rows**, one per source record under each strategy. Canonical-identity overlap across train/test is zero under both rules. Scaffold overlap is zero under the scaffold rule; the random rule reports its overlap. These checks describe the supplied group definitions, not every possible chemical relationship.
 
+The [prediction example](examples/heldout-predictions/README.md) contains **1,356 test-role rows**: 226 for each of six split/model pairs. Its observed values and predictions reconstruct the existing RMSE, MAE, and R² at the recorded tolerance. This is a reproducibility result, not a new performance experiment.
+
 See the [generated analysis](results/report.md), [structural similarity](results/structural_similarity.csv), and [distance/error summaries](results/distance_error_bins.csv). Different scaffold keys can still represent similar chemistry; distance bins are diagnostics, not calibrated reliability limits.
 
 ## Practical use and limitations
 
 Use the benchmark for reproducibility work or to inspect how a modeling claim depends on its partition. All model selection uses grouped CV within training data, and the audit exposes those assignments without using held-out targets for partition decisions.
+
+Prediction rows expose observed outcomes so their metrics can be checked. A record held out in one strategy can be training data in the other; the combined export is not a label-blind training resource. Keep these outcomes out of new model choices if you intend to continue treating the same rows as held out. The exporter uses the recorded parameters without a new search, and refuses changed source fingerprints, incompatible runtime versions, or an existing destination.
 
 One fixed partition per strategy supplies no confidence interval or external validation. Missing experimental pH, temperature, assay method, and solid-form information are not filled with assumptions. Chemical identity uses the specified RDKit conventions, without salt stripping, neutralization, or tautomer standardization. A passing audit verifies recorded computational choices; it does not validate measurements, predictions, therapeutic value, or performance on new chemistry.
 
@@ -73,12 +81,12 @@ The [practical-use guide](docs/practical-use.md) separates implemented checks fr
 | [Data provenance](docs/data-provenance.md) and [reuse terms](data/LICENSE.md) | Source chain, row counts, hashes, and licensing. |
 | [Data dictionary](docs/data-dictionary.md) | Inputs, descriptors, and output meanings. |
 | [Practical use](docs/practical-use.md) | Worked audit use, checks, and prioritized improvements. |
-| [Literature review](docs/literature-review.md) and [search log](docs/search-log.json) | Review scope, exact searches, screening, and source-to-code decisions. |
+| [Literature review](docs/literature-review.md), [original search log](docs/search-log.json), and [round 2 update](docs/search-update-02.json) | Scope-specific searches, screening, and source-to-code decisions. |
 | [Verification](docs/verification.md) | Executed checks and reproduction record. |
 
 ## Development and reuse
 
-The original tests check input validation, target leakage, split separation, scaling, metrics, and undefined R². Added audit tests check exported membership, reference mismatches, deterministic output, and input protection. Run the test suite and numerical reproduction check before contributing; see [CONTRIBUTING.md](CONTRIBUTING.md).
+The original tests check input validation, target leakage, split separation, scaling, metrics, and undefined R². Audit tests check exported membership, reference mismatches, deterministic output, and input protection. Prediction tests check exact held-out membership, source-row mapping, independent arithmetic, corrupted bundles, and refitting without parameter search. Run the test suite and numerical reproduction check before contributing; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 The measurements originate from [Delaney's 2004 supporting data](https://doi.org/10.1021/ci034243x.s001), distributed as a processed benchmark by DeepChem. The original development sample, released supporting table, and common benchmark have different row counts, explained in [provenance](docs/data-provenance.md).
 

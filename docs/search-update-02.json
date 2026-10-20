@@ -1,0 +1,166 @@
+{
+  "search_date": "2026-10-20",
+  "scope": "Round 2: frozen held-out prediction export and independent reconstruction of the existing six metric rows. This is a distinct implementation scope on the same date as round 1, not elapsed-time surveillance.",
+  "inclusion_criteria": [
+    "Primary molecular evaluation studies that clarify why sample identity, partition membership, and metric definition matter to reuse",
+    "Official versioned definitions for the existing regression metrics and train/test separation"
+  ],
+  "exclusion_criteria": [
+    "New model architecture or biological application without a consequence for the export/verification contract",
+    "General surveys rather than needed primary evidence",
+    "New endpoints, experiments, model-selection schemes, and claims requiring changed scientific results"
+  ],
+  "searches": [
+    {
+      "id": "R2-PM1",
+      "source": "PubMed connector",
+      "query": "\"molecular property prediction\"[Title/Abstract] AND (reproducibility[Title/Abstract] OR \"data leakage\"[Title/Abstract] OR \"train-test\"[Title/Abstract])",
+      "date_from": "2022/01/01",
+      "date_to": "2026/10/20",
+      "date_type": "publication",
+      "sort": "relevance",
+      "max_results": 5,
+      "max_abstract_chars": 5000,
+      "max_nested_results": 5,
+      "query_translation": "\"molecular property prediction\"[Title/Abstract] AND (\"reproducibility\"[Title/Abstract] OR \"data leakage\"[Title/Abstract] OR \"train-test\"[Title/Abstract]) AND 2022/01/01:2026/10/20[Date - Publication]",
+      "total_results": 4,
+      "returned_count": 4,
+      "retrieved_pmids": [
+        "40893275",
+        "42096352",
+        "40495205",
+        "41050438"
+      ],
+      "next_offset": null,
+      "has_more": false,
+      "pagination_limited": false,
+      "selection_limit": "All four returned records screened; this one narrow query is not exhaustive for the topic.",
+      "nested_metadata_truncation": [
+        "articles.42096352.authors",
+        "articles.41050438.authors"
+      ]
+    },
+    {
+      "id": "R2-DOC-MSE",
+      "source": "Official scikit-learn direct retrieval",
+      "query": "https://scikit-learn.org/1.8/modules/generated/sklearn.metrics.mean_squared_error.html",
+      "version": "1.8.0",
+      "total_results": null,
+      "pages_inspected": 1,
+      "sections_inspected": [
+        "definition",
+        "parameters",
+        "return values",
+        "notes"
+      ],
+      "limit": "One named API/guidance page; not a search-result count."
+    },
+    {
+      "id": "R2-DOC-MAE",
+      "source": "Official scikit-learn direct retrieval",
+      "query": "https://scikit-learn.org/1.8/modules/generated/sklearn.metrics.mean_absolute_error.html",
+      "version": "1.8.0",
+      "total_results": null,
+      "pages_inspected": 1,
+      "sections_inspected": [
+        "definition",
+        "parameters",
+        "return values",
+        "notes"
+      ],
+      "limit": "One named API/guidance page; not a search-result count."
+    },
+    {
+      "id": "R2-DOC-R2",
+      "source": "Official scikit-learn direct retrieval",
+      "query": "https://scikit-learn.org/1.8/modules/generated/sklearn.metrics.r2_score.html",
+      "version": "1.8.0",
+      "total_results": null,
+      "pages_inspected": 1,
+      "sections_inspected": [
+        "definition",
+        "parameters",
+        "return values",
+        "notes"
+      ],
+      "limit": "One named API/guidance page; not a search-result count."
+    },
+    {
+      "id": "R2-DOC-leakage",
+      "source": "Official scikit-learn direct retrieval",
+      "query": "https://scikit-learn.org/1.8/common_pitfalls.html",
+      "version": "1.8.0",
+      "total_results": null,
+      "pages_inspected": 1,
+      "sections_inspected": [
+        "inconsistent preprocessing",
+        "data leakage"
+      ],
+      "limit": "One named API/guidance page; not a search-result count."
+    }
+  ],
+  "screening": [
+    {
+      "pmid": "40893275",
+      "title": "StackNAFLD: An Accurate Stacking Ensemble Learning Targeting NAFLD Treatment.",
+      "publication_date": "2025 Aug 26",
+      "decision": "exclude",
+      "reason": "Different biological endpoint and stacking-method development; no needed consequence for reproducing the existing solubility metrics."
+    },
+    {
+      "pmid": "42096352",
+      "title": "A Systematic Survey and Benchmark of Deep Learning for Molecular Property Prediction in the Foundation Model Era.",
+      "publication_date": "2026 May 26",
+      "decision": "exclude",
+      "reason": "Survey-level coverage is not required for this narrow implementation contract; primary evidence is retained instead."
+    },
+    {
+      "pmid": "40495205",
+      "title": "UMAP-based clustering split for rigorous evaluation of AI models for virtual screening on cancer cell lines.",
+      "publication_date": "2025 Jun 10",
+      "decision": "include",
+      "reason": "Primary comparison showing that split choice and aggregation/evaluation details affect reported results; supports preserving exact row/partition identities, without importing its endpoint or performance estimates."
+    },
+    {
+      "pmid": "41050438",
+      "title": "32 examples of LLM applications in materials science and chemistry: towards automation, assistants, agents, and accelerated scientific discovery.",
+      "publication_date": "2025 Sep 30",
+      "decision": "exclude",
+      "reason": "Broad LLM applications/resource review outside the frozen prediction-verification question."
+    }
+  ],
+  "retrievals": [
+    {
+      "pmid": "40495205",
+      "pmcid": "PMC12153141",
+      "doi": "10.1186/s13321-025-01039-8",
+      "method": "PubMed rights-eligible full text",
+      "text_offsets": [
+        0,
+        50000
+      ],
+      "returned_char_counts": [
+        50000,
+        19919
+      ],
+      "total_text_chars": 69919,
+      "complete_retrieval": true,
+      "appraisal": "Read evaluation/split definitions and aggregation choices and their context; no replication or adoption of the paper's quantitative findings."
+    }
+  ],
+  "counts": {
+    "unique_pubmed_records_screened": 4,
+    "retained_pubmed_papers": 1,
+    "retained_official_documentation_pages": 4,
+    "retained_sources_total": 5
+  },
+  "limitations": [
+    "Same-day scope update, not a claim of new publications since round 1",
+    "One narrow PubMed query; unqueried terminology/databases may omit relevant studies",
+    "All four search records screened from title/abstract; only the retained paper received full-text appraisal",
+    "Nested author lists capped at five during discovery; no abstract clipping was reported",
+    "No source abstracts/full text copied into repository; documentation uses original paraphrases",
+    "No external GitHub code inspected or copied; no claim of numerical replication of the retained paper",
+    "Evidence informs the contract; tests establish this code's observed behavior, not literature citation alone"
+  ]
+}
