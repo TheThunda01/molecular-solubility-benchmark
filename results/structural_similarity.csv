@@ -1,0 +1,3 @@
+split,test_rows,mean_nearest_training_tanimoto,median_nearest_training_tanimoto,maximum_nearest_training_tanimoto,fraction_at_least_0_8
+random,226,0.5674199964331755,0.5555555555555556,1.0,0.1504424778761062
+scaffold,226,0.3772323911886182,0.36549165120593696,1.0,0.017699115044247787

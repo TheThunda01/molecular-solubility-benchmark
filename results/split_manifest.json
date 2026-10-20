@@ -1,0 +1,39 @@
+{
+  "seed": 2026,
+  "input_sha256": "e8865f1c10fdd2f5fb46d16075fccbaba388b85f57bebef89261750b3cbb9a77",
+  "rows": 1128,
+  "features": [
+    "molecular_weight",
+    "calculated_logp",
+    "polar_surface_area",
+    "hydrogen_bond_donors",
+    "hydrogen_bond_acceptors",
+    "rotatable_bonds",
+    "ring_count",
+    "fraction_csp3",
+    "aromatic_heavy_atom_fraction"
+  ],
+  "source_predictor_used": false,
+  "split_label_usage": "none",
+  "duplicate_structure_extra_rows": 11,
+  "unique_scaffolds": 269,
+  "acyclic_rows": 317,
+  "splits": {
+    "random": {
+      "train_rows": 902,
+      "test_rows": 226,
+      "train_indices_sha256": "18dad4b764b58cc01d0d77edf350ed55f5f7ed9a4b49c28a0169652221286906",
+      "test_indices_sha256": "520ab2ce905d3d4e1158cd0dd8ad038c2ed58281e7eb0c8caa447dde8bc34b28",
+      "train_groups": 893,
+      "test_scaffold_overlap_fraction": 0.8141592920353983
+    },
+    "scaffold": {
+      "train_rows": 902,
+      "test_rows": 226,
+      "train_indices_sha256": "c1204b923aa7614c86e7ed027ed6f3ef12ad3e633cafcdad1ba5b45d8048415e",
+      "test_indices_sha256": "75b71d71958ab9a04d3a333beea1de5896e1d76a1ac5ea60e82e03e1c684d0dd",
+      "train_groups": 59,
+      "test_scaffold_overlap_fraction": 0.0
+    }
+  }
+}

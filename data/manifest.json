@@ -1,0 +1,19 @@
+{
+  "source": "DeepChem processed Delaney (ESOL) benchmark; cross-checked against ACS supporting information",
+  "deepchem_url": "https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/delaney-processed.csv",
+  "deepchem_sha256": "8c06a76f0c6487d29ab0f903e6a7a7139f189ab3c1178f159c8be8964602f189",
+  "original_data_doi": "https://doi.org/10.1021/ci034243x.s001",
+  "original_download_url": "https://ndownloader.figshare.com/files/14790314",
+  "original_sha256": "c12da8daa5b6867794c925b7df64d4c883f3f9bc1799a5ae9113bc3f586b3899",
+  "license": "CC BY-NC 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_evidence": "https://api.figshare.com/v2/articles/7944677",
+  "retrieved_at_utc": "2026-10-20T17:48:32.559566+00:00",
+  "subset_file": "delaney_subset.csv",
+  "subset_sha256": "e8865f1c10fdd2f5fb46d16075fccbaba388b85f57bebef89261750b3cbb9a77",
+  "rows": 1128,
+  "matched_original_structure_target_pairs": 1128,
+  "transformation": "Select 1128 matched rows in DeepChem order. Copy stripped SMILES and the original ACS measured-value text; omit compound names, predicted ESOL, and descriptors.",
+  "original_supporting_table_rows": 1144,
+  "matching_rule": "Exact stripped SMILES and measured logS rounded to6 decimal places to ignore binary float serialization artifacts."
+}

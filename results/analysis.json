@@ -1,0 +1,118 @@
+{
+  "status": "educational retrospective solubility benchmark; no external or prospective validation",
+  "versions": {
+    "numpy": "2.3.5",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8",
+    "rdkit": "2025.9.1"
+  },
+  "metrics": [
+    {
+      "split": "random",
+      "model": "training_mean",
+      "train_rows": 902,
+      "test_rows": 226,
+      "rmse_log10_mol_l": 2.0875421547230113,
+      "mae_log10_mol_l": 1.6912414398681397,
+      "r2": -0.0021487606818348937
+    },
+    {
+      "split": "random",
+      "model": "ridge",
+      "train_rows": 902,
+      "test_rows": 226,
+      "rmse_log10_mol_l": 0.9107184534977782,
+      "mae_log10_mol_l": 0.7142542654275206,
+      "r2": 0.8092651910845889
+    },
+    {
+      "split": "random",
+      "model": "random_forest",
+      "train_rows": 902,
+      "test_rows": 226,
+      "rmse_log10_mol_l": 0.6937544747670876,
+      "mae_log10_mol_l": 0.5084141233159664,
+      "r2": 0.8893189475422986
+    },
+    {
+      "split": "scaffold",
+      "model": "training_mean",
+      "train_rows": 902,
+      "test_rows": 226,
+      "rmse_log10_mol_l": 2.2660531384669045,
+      "mae_log10_mol_l": 1.7097415968447698,
+      "r2": -0.20193863355931607
+    },
+    {
+      "split": "scaffold",
+      "model": "ridge",
+      "train_rows": 902,
+      "test_rows": 226,
+      "rmse_log10_mol_l": 1.250412346051648,
+      "mae_log10_mol_l": 0.9502048358651054,
+      "r2": 0.6340273578592326
+    },
+    {
+      "split": "scaffold",
+      "model": "random_forest",
+      "train_rows": 902,
+      "test_rows": 226,
+      "rmse_log10_mol_l": 0.9336230214648532,
+      "mae_log10_mol_l": 0.7291005469288985,
+      "r2": 0.7959741389150015
+    }
+  ],
+  "selected_hyperparameters": {
+    "random": {
+      "ridge": {
+        "model__alpha": 1.0
+      },
+      "random_forest": {
+        "model__max_features": 0.7,
+        "model__min_samples_leaf": 1
+      }
+    },
+    "scaffold": {
+      "ridge": {
+        "model__alpha": 10.0
+      },
+      "random_forest": {
+        "model__max_features": 0.7,
+        "model__min_samples_leaf": 1
+      }
+    }
+  },
+  "training_distance_parameters": {
+    "random": {
+      "training_loo_distance_q50": 0.3987080224173365,
+      "training_loo_distance_q90": 1.1424121939635101,
+      "distance": "Euclidean after training-only standardization; descriptive, not a validated applicability-domain boundary"
+    },
+    "scaffold": {
+      "training_loo_distance_q50": 0.2929406245879452,
+      "training_loo_distance_q90": 0.9755906518432313,
+      "distance": "Euclidean after training-only standardization; descriptive, not a validated applicability-domain boundary"
+    }
+  },
+  "structural_similarity": [
+    {
+      "split": "random",
+      "test_rows": 226,
+      "mean_nearest_training_tanimoto": 0.5674199964331755,
+      "median_nearest_training_tanimoto": 0.5555555555555556,
+      "maximum_nearest_training_tanimoto": 1.0,
+      "fraction_at_least_0_8": 0.1504424778761062
+    },
+    {
+      "split": "scaffold",
+      "test_rows": 226,
+      "mean_nearest_training_tanimoto": 0.3772323911886182,
+      "median_nearest_training_tanimoto": 0.36549165120593696,
+      "maximum_nearest_training_tanimoto": 1.0,
+      "fraction_at_least_0_8": 0.017699115044247787
+    }
+  ],
+  "preprocessing": "Descriptors recomputed from each provided SMILES; no salt/tautomer normalization; duplicate identities stay together",
+  "uncertainty": "Single fixed partition per strategy; no confidence or transportability guarantee. Comparisons change both composition and structural overlap."
+}
