@@ -79,6 +79,7 @@ The [practical-use guide](docs/practical-use.md) separates implemented checks fr
 | [Methods and limitations](docs/methods.md) | Split rules, acyclic handling, model grids, and interpretive limits. |
 | [Glossary](docs/glossary.md) and [assumptions](docs/assumptions.md) | Vocabulary, design rationales, checks and failure consequences. |
 | [Reference audit](docs/reference-audit.json) and [review record](docs/review-2026-10-20.md) | Source verification and corrections. |
+| [Maintenance review, 21 October 2026](docs/review-2026-10-21.md) | Source checks, Windows test support and fresh reproduction. |
 | [References](docs/references.md) | Source attribution and the claims each source supports. |
 | [Data provenance](docs/data-provenance.md) and [reuse terms](data/LICENSE.md) | Source chain, row counts, hashes, and licensing. |
 | [Data dictionary](docs/data-dictionary.md) | Inputs, descriptors, and output meanings. |
@@ -88,7 +89,7 @@ The [practical-use guide](docs/practical-use.md) separates implemented checks fr
 
 ## Development and reuse
 
-The original tests check input validation, target leakage, split separation, scaling, metrics, and undefined R². Audit tests check exported membership, reference mismatches, deterministic output, and input protection. Prediction tests check exact held-out membership, source-row mapping, independent arithmetic, corrupted bundles, and refitting without parameter search. Run the test suite and numerical reproduction check before contributing; see [CONTRIBUTING.md](CONTRIBUTING.md).
+The original tests check input validation, target leakage, split separation, scaling, metrics, and undefined R². Audit tests check exported membership, reference mismatches, deterministic output, and input protection. Prediction tests check exact held-out membership, source-row mapping, independent arithmetic, corrupted bundles, and refitting without parameter search. The broken-symlink check is separate and reports a skip when the operating system cannot create a symlink; the other output-protection checks still run. CI runs the suite on Ubuntu and Windows. Run the tests and numerical reproduction check before contributing; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 The measurements originate from [Delaney's 2004 supporting data](https://doi.org/10.1021/ci034243x.s001), distributed as a processed benchmark by DeepChem. The original development sample, released supporting table, and common benchmark have different row counts, explained in [provenance](docs/data-provenance.md).
 

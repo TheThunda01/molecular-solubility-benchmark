@@ -348,5 +348,37 @@
       "corrections": [],
       "version": "1.8.0"
     }
+  ],
+  "follow_up_reviews": [
+    {
+      "review_date": "2026-10-21",
+      "scope": "Targeted maintenance and scientific-language recheck; earlier source-by-source dates and historical search logs retained.",
+      "source_checks": [
+        {
+          "reference_id": "delaney2004",
+          "access_level_this_review": "abstract",
+          "checked": "Current PubMed abstract and bibliographic metadata; original ESOL model distinct from this descriptor benchmark."
+        },
+        {
+          "reference_id": "delaney_support",
+          "access_level_this_review": "metadata_only",
+          "checked": "ACS Figshare API: supporting-data DOI, original file identity and CC BY-NC 4.0 verified."
+        },
+        {
+          "reference_id": "llompart2024",
+          "access_level_this_review": "abstract",
+          "checked": "Current PubMed abstract on measurement sources, curation and prospective reliability; no performance values transferred."
+        },
+        {
+          "reference_id": "groupkfold",
+          "access_level_this_review": "official_documentation",
+          "checked": "Version 1.8 group-separation semantics checked against implemented inner validation."
+        }
+      ],
+      "limits": [
+        "This follow-up is not a new systematic literature search or comprehensive supplementary-material appraisal.",
+        "Local numerical reproduction verifies calculations, not biological generalization."
+      ]
+    }
   ]
 }

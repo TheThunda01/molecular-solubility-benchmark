@@ -1,5 +1,7 @@
 # References and what they support
 
+Targeted checks from 21 October 2026 are recorded in the [maintenance review](review-2026-10-21.md). Earlier access dates and search records remain unchanged.
+
 Long author lists use first author followed by “et al.” Publication details and source-level access limits are recorded in the [reference audit](reference-audit.json). The historical [rapid review](literature-review.md) documents discovery and implementation decisions; it is not an exhaustive systematic review.
 
 ## Research articles

@@ -1,5 +1,6 @@
 from copy import deepcopy
 import csv
+import errno
 from contextlib import redirect_stderr
 import io
 import json
@@ -193,14 +194,23 @@ class BundleTests(unittest.TestCase):
                              {p.name: p.read_bytes() for p in other.iterdir()})
             with self.assertRaisesRegex(ValueError, "already exists"):
                 export_bundle(other)
-            link = Path(temp) / "link"
-            link.symlink_to(Path(temp) / "absent", target_is_directory=True)
-            with self.assertRaisesRegex(ValueError, "already exists"):
-                export_bundle(link)
         for name, content in before.items():
             self.assertEqual((ROOT / name).read_bytes(), content)
         with self.assertRaisesRegex(ValueError, "outside"):
             export_bundle(ROOT / "results/new_predictions")
+
+    def test_broken_symlink_destination_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            link = Path(temp) / "link"
+            try:
+                link.symlink_to(Path(temp) / "absent", target_is_directory=True)
+            except OSError as error:
+                unavailable = {errno.EPERM, errno.EACCES, errno.ENOSYS, errno.EOPNOTSUPP}
+                if error.errno in unavailable or getattr(error, "winerror", None) == 1314:
+                    self.skipTest("This environment cannot create a directory symlink")
+                raise
+            with self.assertRaisesRegex(ValueError, "already exists"):
+                export_bundle(link)
 
     def test_changed_input_fails_before_creating_output(self):
         with tempfile.TemporaryDirectory() as temp:
