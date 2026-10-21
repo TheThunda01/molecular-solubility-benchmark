@@ -110,7 +110,9 @@ class MetricTests(unittest.TestCase):
     def test_near_and_distant_descriptor_points(self):
         train=np.array([[0.,0.],[1.,1.],[2.,3.],[4.,7.]])
         dist,bins,_=distance_diagnostics(train,np.array([[0.,0.],[999.,999.]]))
-        self.assertEqual(dist[0],0);self.assertEqual(bins[1],'above_training_q90')
+        # Distance kernels can leave square-rooted roundoff for identical points.
+        np.testing.assert_allclose(dist[0],0,rtol=0,atol=1e-7)
+        self.assertEqual(bins[1],'above_training_q90')
 
     def test_constant_target_complete_report_marks_r2_undefined(self):
         from sklearn.pipeline import Pipeline
