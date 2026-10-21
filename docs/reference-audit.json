@@ -1,0 +1,352 @@
+{
+  "review_date": "2026-10-20",
+  "scope": "Molecular-solubility benchmark, split audit and frozen prediction export",
+  "limits": [
+    "Targeted verification of sources already used plus directly relevant official documentation; not a new systematic search.",
+    "Access levels distinguish full-text sections, abstracts and metadata. Historical search logs are preserved.",
+    "A source supports only the claims listed; project-specific results come from local data/code and are not attributed to literature."
+  ],
+  "references": [
+    {
+      "id": "delaney2004",
+      "source_type": "peer_reviewed_article",
+      "title": "ESOL: estimating aqueous solubility directly from molecular structure",
+      "authors": "Delaney JS",
+      "year": 2004,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15154768/",
+      "checked_on": "2026-10-20",
+      "access_level": "abstract",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Historical structure-based solubility model and 2,874-value development sample."
+      ],
+      "limitations": [
+        "Abstract/citation only; the released support table and processed subset are verified separately.",
+        "This project does not reproduce the original fitted equation."
+      ],
+      "corrections": [],
+      "doi": "10.1021/ci034243x",
+      "pmid": "15154768",
+      "alternate_urls": [
+        "https://doi.org/10.1021/ci034243x"
+      ]
+    },
+    {
+      "id": "delaney_support",
+      "source_type": "dataset",
+      "title": "ESOL: Estimating Aqueous Solubility Directly from Molecular Structure — supporting data",
+      "authors": "John S. Delaney",
+      "year": 2004,
+      "url": "https://doi.org/10.1021/ci034243x.s001",
+      "checked_on": "2026-10-20",
+      "access_level": "metadata_only",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Original supporting file identity and CC BY-NC 4.0 license."
+      ],
+      "limitations": [
+        "The metadata/license record is not evidence that all assays share conditions.",
+        "No inference is made about why 16 supporting-table rows are missing from the processed benchmark."
+      ],
+      "corrections": [],
+      "doi": "10.1021/ci034243x.s001",
+      "version": "Figshare item 7944677, version 1",
+      "alternate_urls": [
+        "https://api.figshare.com/v2/articles/7944677"
+      ]
+    },
+    {
+      "id": "llompart2024",
+      "source_type": "peer_reviewed_article",
+      "title": "Will we ever be able to accurately predict solubility?",
+      "authors": "Llompart P et al.",
+      "year": 2024,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38499581/",
+      "checked_on": "2026-10-20",
+      "access_level": "full_text",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Solubility endpoint definitions, assay context, overlapping sources and external evaluation affect interpretation."
+      ],
+      "limitations": [
+        "Full PMC body retrieved in two parts; relevant measurement and data-evaluation sections inspected.",
+        "Its effect sizes and model rankings are not transferred."
+      ],
+      "corrections": [],
+      "doi": "10.1038/s41597-024-03105-6",
+      "pmid": "38499581",
+      "alternate_urls": [
+        "https://doi.org/10.1038/s41597-024-03105-6"
+      ]
+    },
+    {
+      "id": "meng2022",
+      "source_type": "peer_reviewed_article",
+      "title": "Boosting the predictive performance with aqueous solubility dataset curation",
+      "authors": "Meng J et al.",
+      "year": 2022,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35241693/",
+      "checked_on": "2026-10-20",
+      "access_level": "full_text",
+      "metadata_status": "corrected",
+      "supported_claims": [
+        "Repeated records and data curation affect a specific multi-dataset solubility workflow."
+      ],
+      "limitations": [
+        "Full PMC body retrieved in two parts; its curation rules, filtering choices and improvements are not adopted."
+      ],
+      "corrections": [
+        "Replaced incomplete five-name author list with first author et al.; PubMed lists eight authors."
+      ],
+      "doi": "10.1038/s41597-022-01154-3",
+      "pmid": "35241693",
+      "alternate_urls": [
+        "https://doi.org/10.1038/s41597-022-01154-3"
+      ]
+    },
+    {
+      "id": "bemis1996",
+      "source_type": "peer_reviewed_article",
+      "title": "The properties of known drugs. 1. Molecular frameworks",
+      "authors": [
+        "Bemis GW",
+        "Murcko MA"
+      ],
+      "year": 1996,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8709122/",
+      "checked_on": "2026-10-20",
+      "access_level": "abstract",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Conceptual basis of ring/linker molecular frameworks."
+      ],
+      "limitations": [
+        "Abstract only. Exact executable nonchiral definition verified in pinned RDKit source; not every framework variant in the paper is implemented."
+      ],
+      "corrections": [],
+      "doi": "10.1021/jm9602928",
+      "pmid": "8709122",
+      "alternate_urls": [
+        "https://doi.org/10.1021/jm9602928"
+      ]
+    },
+    {
+      "id": "wu2018",
+      "source_type": "peer_reviewed_article",
+      "title": "MoleculeNet: a benchmark for molecular machine learning",
+      "authors": "Wu Z et al.",
+      "year": 2018,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29629118/",
+      "checked_on": "2026-10-20",
+      "access_level": "full_text",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Molecular benchmark interpretation depends on data, splits, representations, models and metrics."
+      ],
+      "limitations": [
+        "Full PMC body retrieved in two parts; no published score is treated as comparable to this custom protocol."
+      ],
+      "corrections": [],
+      "doi": "10.1039/C7SC02664A",
+      "pmid": "29629118",
+      "alternate_urls": [
+        "https://doi.org/10.1039/C7SC02664A"
+      ]
+    },
+    {
+      "id": "guo2025",
+      "source_type": "peer_reviewed_article",
+      "title": "UMAP-based clustering split for rigorous evaluation of AI models for virtual screening on cancer cell lines",
+      "authors": [
+        "Guo Q",
+        "Hernandez-Hernandez S",
+        "Ballester PJ"
+      ],
+      "year": 2025,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40495205/",
+      "checked_on": "2026-10-20",
+      "access_level": "full_text",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Different scaffold labels can retain structural similarity; evaluation depends on split and metric choices."
+      ],
+      "limitations": [
+        "Full PMC body retrieved in two parts. Its endpoint is cell-line virtual screening, not solubility; no effect size or preferred method is transferred."
+      ],
+      "corrections": [],
+      "doi": "10.1186/s13321-025-01039-8",
+      "pmid": "40495205",
+      "alternate_urls": [
+        "https://doi.org/10.1186/s13321-025-01039-8"
+      ]
+    },
+    {
+      "id": "deepchem_loader",
+      "source_type": "official_software_documentation",
+      "title": "Delaney dataset loader",
+      "authors": "Project maintainers",
+      "year": null,
+      "url": "https://github.com/deepchem/deepchem/blob/master/deepchem/molnet/load_function/delaney_datasets.py",
+      "checked_on": "2026-10-20",
+      "access_level": "official_documentation",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Official processed-data URL, measured-solubility target name and 1,128-record task."
+      ],
+      "limitations": [
+        "Its code license does not determine the dataset license; current loader code is not executed here."
+      ],
+      "corrections": [],
+      "version": "Observed blob 9e68bf6e9d54d858d1d5dffe79ec62994b1d7c78"
+    },
+    {
+      "id": "rdkit_scaffold",
+      "source_type": "official_software_documentation",
+      "title": "MurckoScaffold.py",
+      "authors": "Project maintainers",
+      "year": null,
+      "url": "https://github.com/rdkit/rdkit/blob/Release_2025_09_1/rdkit/Chem/Scaffolds/MurckoScaffold.py",
+      "checked_on": "2026-10-20",
+      "access_level": "official_documentation",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "GetScaffoldForMol and MurckoScaffoldSmiles with includeChirality=False define the grouping used.",
+        "MakeScaffoldGeneric is a separate function and is not called."
+      ],
+      "limitations": [
+        "Current web API is RDKit 2026.09.1; the versioned source, not current API branding, supports runtime 2025.9.1 semantics."
+      ],
+      "corrections": [],
+      "version": "Release_2025_09_1; blob 8b456b1d3ae6fcdce6b1e0e13239ff382af9efe9"
+    },
+    {
+      "id": "rdkit_api",
+      "source_type": "official_software_documentation",
+      "title": "rdkit.Chem.Scaffolds.MurckoScaffold",
+      "authors": "Project maintainers",
+      "year": null,
+      "url": "https://www.rdkit.org/docs/source/rdkit.Chem.Scaffolds.MurckoScaffold.html",
+      "checked_on": "2026-10-20",
+      "access_level": "official_documentation",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Public API descriptions distinguish ordinary and generic scaffolds."
+      ],
+      "limitations": [
+        "Not documentation of the pinned 2025.9.1 runtime; pinned source checked separately."
+      ],
+      "corrections": [],
+      "version": "2026.09.1 (current reference, not run environment)"
+    },
+    {
+      "id": "groupkfold",
+      "source_type": "official_software_documentation",
+      "title": "GroupKFold",
+      "authors": "Project maintainers",
+      "year": null,
+      "url": "https://scikit-learn.org/1.8/modules/generated/sklearn.model_selection.GroupKFold.html",
+      "checked_on": "2026-10-20",
+      "access_level": "official_documentation",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Supplied groups do not overlap across validation folds."
+      ],
+      "limitations": [
+        "The software cannot determine whether the chosen groups capture all scientific dependencies."
+      ],
+      "corrections": [],
+      "version": "1.8.0"
+    },
+    {
+      "id": "groupshufflesplit",
+      "source_type": "official_software_documentation",
+      "title": "GroupShuffleSplit",
+      "authors": "Project maintainers",
+      "year": null,
+      "url": "https://scikit-learn.org/1.8/modules/generated/sklearn.model_selection.GroupShuffleSplit.html",
+      "checked_on": "2026-10-20",
+      "access_level": "official_documentation",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "The test-size fraction applies to groups rather than individual samples."
+      ],
+      "limitations": [
+        "Exact row proportion depends on group sizes."
+      ],
+      "corrections": [],
+      "version": "1.8.0"
+    },
+    {
+      "id": "sklearn_pitfalls",
+      "source_type": "official_software_documentation",
+      "title": "Common pitfalls and recommended practices",
+      "authors": "Project maintainers",
+      "year": null,
+      "url": "https://scikit-learn.org/1.8/common_pitfalls.html",
+      "checked_on": "2026-10-20",
+      "access_level": "official_documentation",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Fit preprocessing and select models on training data; apply learned transformations to held-out data."
+      ],
+      "limitations": [
+        "Does not enforce collaborator behavior or establish external validation."
+      ],
+      "corrections": [],
+      "version": "1.8.0"
+    },
+    {
+      "id": "sklearn_mse",
+      "source_type": "official_software_documentation",
+      "title": "mean_squared_error",
+      "authors": "Project maintainers",
+      "year": null,
+      "url": "https://scikit-learn.org/1.8/modules/generated/sklearn.metrics.mean_squared_error.html",
+      "checked_on": "2026-10-20",
+      "access_level": "official_documentation",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Unweighted paired squared-error arithmetic underlying RMSE."
+      ],
+      "limitations": [],
+      "corrections": [],
+      "version": "1.8.0"
+    },
+    {
+      "id": "sklearn_mae",
+      "source_type": "official_software_documentation",
+      "title": "mean_absolute_error",
+      "authors": "Project maintainers",
+      "year": null,
+      "url": "https://scikit-learn.org/1.8/modules/generated/sklearn.metrics.mean_absolute_error.html",
+      "checked_on": "2026-10-20",
+      "access_level": "official_documentation",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "Unweighted paired absolute-error arithmetic."
+      ],
+      "limitations": [],
+      "corrections": [],
+      "version": "1.8.0"
+    },
+    {
+      "id": "sklearn_r2",
+      "source_type": "official_software_documentation",
+      "title": "r2_score",
+      "authors": "Project maintainers",
+      "year": null,
+      "url": "https://scikit-learn.org/1.8/modules/generated/sklearn.metrics.r2_score.html",
+      "checked_on": "2026-10-20",
+      "access_level": "official_documentation",
+      "metadata_status": "verified",
+      "supported_claims": [
+        "R-squared may be negative; constant targets yield undefined/nonfinite values before optional finite replacements."
+      ],
+      "limitations": [
+        "This repository deliberately represents undefined constant-target R-squared as null rather than using finite replacements."
+      ],
+      "corrections": [],
+      "version": "1.8.0"
+    }
+  ]
+}

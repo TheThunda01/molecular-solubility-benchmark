@@ -10,7 +10,7 @@ Round 2 adds a prediction bundle for checking a completed evaluation elsewhere. 
 
 ## Input and output contract
 
-The analysis and audit use the same CSV reader. Input must contain `smiles` and `measured log solubility in mols per litre`; targets must be finite and SMILES must parse under the pinned RDKit version. Targets are validated because this is the benchmark input contract, but do not determine the audit's partitions and are not exported.
+The analysis and audit use the same CSV reader. Input must contain `smiles` (Simplified Molecular Input Line Entry System structure strings) and `measured log solubility in mols per litre`; targets must be finite and SMILES must parse under the pinned RDKit version. Targets are validated because this is the benchmark input contract, but do not determine the audit's partitions and are not exported.
 
 Run `python -m solubility_benchmark.audit` to compare with `results/split_manifest.json`. Use `--reference PATH` for another compatible recorded manifest. For a new dataset with no recorded reference, `--without-reference` is an explicit alternative; the output records that no baseline was checked.
 
@@ -29,7 +29,7 @@ The separate `solubility_benchmark.predictions export --output NEW_DIRECTORY` co
 | Prediction-bundle file | Contract |
 | --- | --- |
 | `predictions.csv` | Six split/model groups, each with 226 outer-test rows; key `(split, model, source_row_index)`. Includes test-role observed and predicted log10 molar solubility. |
-| `metrics.json` | RMSE, MAE, and R² reconstructed from serialized rows using independent unweighted arithmetic; six baseline matches at `rtol=1e-9`, `atol=1e-10`. |
+| `metrics.json` | Root mean squared error (RMSE), mean absolute error (MAE), and coefficient of determination (R²) reconstructed from serialized rows using independent unweighted arithmetic; six baseline matches at `rtol=1e-9`, `atol=1e-10`. |
 | `receipt.json` | Input/reference and implementation hashes, frozen parameters, runtime versions, file hashes and byte counts. |
 | `README.md` | Interpretation, row conventions, verification command, and data-reuse caveats. |
 
@@ -71,6 +71,8 @@ Join by the split/model/row key rather than CSV line order. Each bundle contains
 - **Implemented:** prediction verification rejects repeated/missing keys, training-role rows, source-index substitutions, changed observed values, and metrics inconsistent with the baseline. Updating a CSV's receipt hash alone does not bypass these semantic checks.
 - **Operator responsibility:** confirm that input rows retain their original order, units and experimental endpoint are appropriate, and the recorded package versions describe your environment.
 - **Operator responsibility:** keep held-out outcomes out of model and preprocessing choices. The export cannot monitor what happens in another notebook. Scikit-learn's [leakage guidance](https://scikit-learn.org/1.8/common_pitfalls.html#data-leakage) explains why that separation matters.
+
+The [glossary](glossary.md) defines the file, chemistry and statistical terms. The [assumption register](assumptions.md) explains which choices are pragmatic and which are supported by direct checks.
 
 ## Known limits
 

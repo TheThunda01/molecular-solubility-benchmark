@@ -13,8 +13,8 @@ The included input has two fields: `smiles` is a molecular structure representat
 | `hydrogen_bond_acceptors` | RDKit hydrogen-bond acceptor count |
 | `rotatable_bonds` | RDKit rotatable-bond count under its default definition |
 | `ring_count` | RDKit ring count |
-| `fraction_csp3` | Fraction of carbon atoms assigned sp3 hybridization |
-| `aromatic_heavy_atom_fraction` | Aromatic-atom count divided by heavy-atom count |
+| `fraction_csp3` | Fraction of carbon atoms assigned sp³ hybridization (approximately tetrahedral carbon bonding) |
+| `aromatic_heavy_atom_fraction` | Aromatic-atom count divided by heavy-atom count; a heavy atom is any atom other than hydrogen |
 
 Definitions are tied to the pinned RDKit version. Counts depend on its aromaticity, valence, and descriptor conventions. The source's predicted ESOL and supplied feature columns never enter this feature matrix.
 
@@ -26,7 +26,7 @@ Definitions are tied to the pinned RDKit version. Counts depend on its aromatici
 | `training_cv.csv` | Candidate parameters, mean and SD of inner-fold RMSE, and selected candidate flag |
 | `distance_error_bins.csv` | Test errors by training-defined nearest-descriptor-distance group, with group counts |
 | `structural_similarity.csv` | Nearest-training radius-2 Morgan-fingerprint similarities for each test partition |
-| `split_manifest.json` | Source hash, fixed features, group counts, and ordered-independent index-set hashes |
+| `split_manifest.json` | Source hash, fixed features, group counts, and order-independent index-set hashes |
 | `analysis.json` | Versions, selected hyperparameters, metric rows, and interpretation limits |
 | `report.md` | Human-readable results and figures |
 

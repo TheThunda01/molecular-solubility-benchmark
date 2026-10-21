@@ -57,11 +57,13 @@ Added `solubility_benchmark.predictions export` and `verify`. Export refits the 
 
 ## Remaining work
 
-The [practical-use roadmap](practical-use.md#next-improvements) prioritizes frozen prediction exports, prespecified repeated partitions, compatible independent measurements, and an audit-bundle validator. Each needs explicit acceptance checks. None is presented as implemented here.
+The first review prioritized frozen prediction exports, prespecified repeated partitions, compatible independent measurements, and an audit-bundle validator. Frozen prediction export and verification were completed in round 2; the other items remain on the [practical-use roadmap](practical-use.md#next-improvements).
 
 ### Round 2 — roadmap update
 
 The frozen prediction export and its read-only verifier are now implemented. The current [roadmap](practical-use.md#next-improvements) retains prespecified repeated partitions, independently documented external measurements, verification of the earlier split-audit format, and prespecified subgroup checks. The earlier paragraph records round 1's priorities; it is not the current feature status.
+
+The [reference audit](reference-audit.json) records the separate editorial source verification on 2026-10-20, including access limits. It does not alter the historical search logs or claim comprehensive literature coverage.
 
 ## Limits of this review
 

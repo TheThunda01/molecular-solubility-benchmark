@@ -12,9 +12,9 @@ The goal is to understand evaluation choices, not to design molecules or support
 
 ## What it does
 
-- Computes nine explicit RDKit descriptors from SMILES, excluding the source's ESOL prediction and supplied descriptors.
+- Computes nine explicit RDKit descriptors (numerical structure summaries) from SMILES (Simplified Molecular Input Line Entry System) strings, excluding the source's ESOL prediction and supplied descriptors.
 - Keeps repeated canonical structures together in both outer partitions and training-only cross-validation.
-- Reports RMSE, MAE, R², structural similarity, and distance-binned errors with group counts.
+- Reports root mean squared error (RMSE), mean absolute error (MAE), the coefficient of determination (R²), structural similarity, and distance-binned errors with group counts.
 - Records data provenance, source hashes, software versions, and fixed split fingerprints.
 - Adds an offline **split audit**: row-level outer roles and inner validation folds, checked against the recorded reference without fitting a model or exporting target values.
 - Exports **frozen held-out predictions** and verifies their row identities, observed values, and six reconstructed metric rows independently of model fitting.
@@ -62,7 +62,7 @@ See the [generated analysis](results/report.md), [structural similarity](results
 
 ## Practical use and limitations
 
-Use the benchmark for reproducibility work or to inspect how a modeling claim depends on its partition. All model selection uses grouped CV within training data, and the audit exposes those assignments without using held-out targets for partition decisions.
+Use the benchmark for reproducibility work or to inspect how a modeling claim depends on its partition. All model selection uses grouped cross-validation (CV), which keeps specified related records together within training data, and the audit exposes those assignments without using held-out targets for partition decisions.
 
 Prediction rows expose observed outcomes so their metrics can be checked. A record held out in one strategy can be training data in the other; the combined export is not a label-blind training resource. Keep these outcomes out of new model choices if you intend to continue treating the same rows as held out. The exporter uses the recorded parameters without a new search, and refuses changed source fingerprints, incompatible runtime versions, or an existing destination.
 
@@ -77,6 +77,8 @@ The [practical-use guide](docs/practical-use.md) separates implemented checks fr
 | [Project context](docs/project-context.md) | Background, motivation, and main themes. |
 | [Biology and chemistry concepts](docs/biology-and-concepts.md) | What solubility, descriptors, and evaluation metrics represent. |
 | [Methods and limitations](docs/methods.md) | Split rules, acyclic handling, model grids, and interpretive limits. |
+| [Glossary](docs/glossary.md) and [assumptions](docs/assumptions.md) | Vocabulary, design rationales, checks and failure consequences. |
+| [Reference audit](docs/reference-audit.json) and [review record](docs/review-2026-10-20.md) | Source verification and corrections. |
 | [References](docs/references.md) | Source attribution and the claims each source supports. |
 | [Data provenance](docs/data-provenance.md) and [reuse terms](data/LICENSE.md) | Source chain, row counts, hashes, and licensing. |
 | [Data dictionary](docs/data-dictionary.md) | Inputs, descriptors, and output meanings. |
