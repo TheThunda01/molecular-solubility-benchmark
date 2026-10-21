@@ -8,7 +8,7 @@ This benchmark's label is a measured log-solubility value. The selected table do
 
 ## Why the logarithm is useful
 
-Solubility values can span orders of magnitude. Here, the endpoint is `log10(S / 1 mol L⁻¹)`, commonly abbreviated as logS in mol/L. A value of −3 corresponds to 0.001 mol/L. A one-unit difference between an observed value and a prediction corresponds to a tenfold ratio for that record. It does not follow that a model's aggregate RMSE is a guarantee of a particular fold error for every compound.
+Solubility values can span orders of magnitude. Here, the endpoint is $`\log_{10}\!\left(\frac{S}{1\,\mathrm{mol}\,\mathrm{L}^{-1}}\right)`$, where $`S`$ is the molar solubility. It is commonly abbreviated as logS in mol/L. A value of −3 corresponds to 0.001 mol/L. A one-unit difference between an observed value and a prediction corresponds to a tenfold ratio for that record. It does not follow that a model's aggregate RMSE is a guarantee of a particular fold error for every compound.
 
 Mean absolute error (MAE) averages absolute prediction errors. Root mean squared error (RMSE) is the square root of the mean squared error, so large errors have more influence. Both retain the log-scale interpretation. The coefficient of determination (R²) compares residual variation with variation around the test-set mean; a negative R² is possible. These metrics describe agreement with archived measurements, not clinical usefulness.
 
