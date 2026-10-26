@@ -2,11 +2,11 @@
 
 **How much does a chemical-property model's evaluation change when related structures are kept together?**
 
-This project follows that question through a small retrospective benchmark, with readable results and a split audit that makes the evaluation plan easier to inspect and reuse.
+This retrospective benchmark compares solubility models under two ways of partitioning the data. Its split audit records which observations train and test each model so readers can inspect and reuse the evaluation plan.
 
 ## Why this project
 
-A prediction score is only useful when its data and evaluation choices are clear. This project uses 1,128 public measured-solubility records to compare a mean baseline, ridge regression, and a random forest. It contrasts an identity-grouped random split with a scaffold-grouped split, then examines held-out errors by distance from training descriptors.
+A prediction score depends on which compounds train and test the model. This project uses 1,128 public measured-solubility records to compare a mean baseline, ridge regression, and a random forest. It contrasts an identity-grouped random split with a scaffold-grouped split, then examines held-out errors by distance from training descriptors.
 
 The goal is to understand evaluation choices, not to design molecules or support clinical decisions. Start with the [project context](docs/project-context.md) or the [chemistry and concepts](docs/biology-and-concepts.md).
 
@@ -16,10 +16,10 @@ The goal is to understand evaluation choices, not to design molecules or support
 - Keeps repeated canonical structures together in both outer partitions and training-only cross-validation.
 - Reports root mean squared error (RMSE), mean absolute error (MAE), the coefficient of determination (R²), structural similarity, and distance-binned errors with group counts.
 - Records data provenance, source hashes, software versions, and fixed split fingerprints.
-- Adds an offline **split audit**: row-level outer roles and inner validation folds, checked against the recorded reference without fitting a model or exporting target values.
+- Audits row-level outer roles and inner validation folds against the recorded reference, offline, without fitting a model or exporting target values.
 - Exports **frozen held-out predictions** and verifies their row identities, observed values, and six reconstructed metric rows independently of model fitting.
 
-The new [audit report](audit/report.md) and [practical-use guide](docs/practical-use.md) explain how to carry the same partitions into another notebook.
+The [audit report](audit/report.md) and [practical-use guide](docs/practical-use.md) explain how to reuse these partitions in another notebook.
 
 ## Quick start
 
@@ -39,11 +39,15 @@ python -m solubility_benchmark.audit --output reproduced-results/audit
 python -m solubility_benchmark.predictions verify examples/heldout-predictions
 ```
 
-The attributed two-column data subset is included, so these commands work offline after installation. The analysis and audit write separate directories under `reproduced-results/`, preserving the recorded `results/` and `audit/`. The audit compares assignments with the original `results/split_manifest.json`; it does not compare model scores. To create a fresh prediction bundle, run `python -m solubility_benchmark.predictions export --output predictions-001`, then verify it with `python -m solubility_benchmark.predictions verify predictions-001`. The destination must not exist. Export refits the already-recorded configurations on their training partitions; verification does not fit anything. Neither command replaces the recorded results.
+The attributed two-column data subset is included, so these commands work offline after installation. The analysis and audit write separate directories under `reproduced-results/`, preserving the recorded `results/` and `audit/`. The audit compares assignments with the original `results/split_manifest.json`; it does not compare model scores.
+
+To create a fresh prediction bundle, run `python -m solubility_benchmark.predictions export --output predictions-001`, then verify it with `python -m solubility_benchmark.predictions verify predictions-001`. The destination must not exist. Export refits the recorded configurations on their training partitions; verification does not fit anything. Neither command replaces the recorded results.
 
 The optional `python scripts/rebuild_dataset.py` downloads and verifies the original pinned sources before recreating the subset. For a full numerical reproduction check that leaves the recorded results in place, run `python scripts/check_reproduction.py`.
 
 ## Example results
+
+All three models had higher RMSE under the scaffold-grouped partition. Lower RMSE indicates smaller prediction errors.
 
 | Partition | Mean-baseline RMSE | Ridge RMSE | Random-forest RMSE |
 | --- | ---: | ---: | ---: |
@@ -62,11 +66,11 @@ See the [generated analysis](results/report.md), [structural similarity](results
 
 ## Practical use and limitations
 
-Use the benchmark for reproducibility work or to inspect how a modeling claim depends on its partition. All model selection uses grouped cross-validation (CV), which keeps specified related records together within training data, and the audit exposes those assignments without using held-out targets for partition decisions.
+Use the benchmark to check reproducibility or examine how partition choices affect a modeling claim. Model selection uses grouped cross-validation (CV), keeping specified related records together within training data. The audit exposes those assignments without using held-out targets to choose partitions.
 
 Prediction rows expose observed outcomes so their metrics can be checked. A record held out in one strategy can be training data in the other; the combined export is not a label-blind training resource. Keep these outcomes out of new model choices if you intend to continue treating the same rows as held out. The exporter uses the recorded parameters without a new search, and refuses changed source fingerprints, incompatible runtime versions, or an existing destination.
 
-One fixed partition per strategy supplies no confidence interval or external validation. Missing experimental pH, temperature, assay method, and solid-form information are not filled with assumptions. Chemical identity uses the specified RDKit conventions, without salt stripping, neutralization, or tautomer standardization. A passing audit verifies recorded computational choices; it does not validate measurements, predictions, therapeutic value, or performance on new chemistry.
+One fixed partition per strategy supplies no confidence interval or external validation. The benchmark leaves missing experimental pH, temperature, assay method, and solid-form information unresolved. It defines chemical identity through the specified RDKit conventions, without salt stripping, neutralization, or tautomer standardization. A passing audit verifies recorded computational choices; it does not validate measurements, predictions, therapeutic value, or performance on new chemistry.
 
 The [practical-use guide](docs/practical-use.md) separates implemented checks from operator responsibilities and future work. The [bounded literature review](docs/literature-review.md) records how the evidence informed this update.
 

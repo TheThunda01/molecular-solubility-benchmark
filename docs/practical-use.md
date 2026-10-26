@@ -2,15 +2,15 @@
 
 ## Where this fits
 
-Use this repository to examine how evaluation changes when related chemical structures stay together. It is useful for a methods exercise, a reproducibility check, or a discussion of what a benchmark score actually covers. It does not select compounds for experiments or establish performance on another laboratory's measurements.
+Use this repository to examine how evaluation changes when related chemical structures stay together. It supports methods exercises, reproducibility checks, and discussions of what a benchmark score covers. It does not select compounds for experiments or establish performance on another laboratory's measurements.
 
-The new split audit makes the partition itself portable. It reconstructs the existing random and scaffold partitions, checks the recorded fingerprints, and exports row-level membership and inner validation folds without fitting a model. This complements the original numerical reproduction check; neither replaces the other.
+The split audit exports partitions for reuse. It reconstructs the random and scaffold partitions, checks their recorded fingerprints, and exports row-level membership and inner validation folds without fitting a model. This checks assignments; the numerical reproduction check tests agreement with the recorded model results. Neither replaces the other.
 
 Round 2 adds a prediction bundle for checking a completed evaluation elsewhere. It makes the recorded outcomes and predictions inspectable, while keeping them separate from the label-free split audit.
 
 ## Input and output contract
 
-The analysis and audit use the same CSV reader. Input must contain `smiles` (Simplified Molecular Input Line Entry System structure strings) and `measured log solubility in mols per litre`; targets must be finite and SMILES must parse under the pinned RDKit version. Targets are validated because this is the benchmark input contract, but do not determine the audit's partitions and are not exported.
+The analysis and audit use the same CSV reader. Input must contain `smiles` (Simplified Molecular Input Line Entry System structure strings) and `measured log solubility in mols per litre`; targets must be finite and SMILES must parse under the pinned RDKit version. The reader validates targets to enforce this shared input contract. The audit neither uses them to choose partitions nor exports them.
 
 Run `python -m solubility_benchmark.audit` to compare with `results/split_manifest.json`. Use `--reference PATH` for another compatible recorded manifest. For a new dataset with no recorded reference, `--without-reference` is an explicit alternative; the output records that no baseline was checked.
 
@@ -24,7 +24,7 @@ Run `python -m solubility_benchmark.audit` to compare with `results/split_manife
 
 The split audit exports no raw SMILES, target values, or predictions. Group hashes support equality checks and joins; they are not anonymization. Structural similarity can remain despite different scaffold hashes.
 
-The separate `solubility_benchmark.predictions export --output NEW_DIRECTORY` command is restricted to the pinned benchmark. It checks the recorded source and split, requires the analysis's RDKit/NumPy/scikit-learn/SciPy versions, and refits each saved configuration once on its own training partition. No fitted estimators were retained from the original run, so this is a reproducible refit with frozen settings, not a claim to recover original in-memory objects. It performs no new cross-validation or parameter search.
+The separate `solubility_benchmark.predictions export --output NEW_DIRECTORY` command accepts only the pinned benchmark. It checks the recorded source and split, requires the analysis's RDKit/NumPy/scikit-learn/SciPy versions, and refits each saved configuration once on its own training partition. The original run did not retain fitted estimators. Export therefore refits the frozen settings without recovering the original in-memory objects or performing new cross-validation or parameter search.
 
 | Prediction-bundle file | Contract |
 | --- | --- |
@@ -78,9 +78,13 @@ The [glossary](glossary.md) defines the file, chemistry and statistical terms. T
 
 The audit checks the implemented grouping scheme, not all possible chemical equivalences. No salt stripping, neutralization, or tautomer normalization is added. It does not certify experimental measurements, estimate uncertainty, or validate a model. Missing measurement conditions remain missing; solubility collections can differ in endpoint definitions and quality ([Llompart et al., 2024](https://pubmed.ncbi.nlm.nih.gov/38499581/)).
 
-Only one fixed partition per strategy is used. The scaffold and random test sets have different composition. All acyclic structures share one declared group. A reference match therefore supports reproducibility of this particular plan, not a general claim about future chemistry. Input/reference validation precedes staged output replacement, but a file-system failure during replacement can still leave a partial report set; check the exit status.
+The benchmark uses one fixed partition per strategy. The scaffold and random test sets differ in composition, and all acyclic structures share one declared group. A reference match therefore supports reproducibility of this plan, not a general claim about future chemistry.
 
-The prediction bundle intentionally exposes held-out outcomes; a row can have a training role under the other strategy. It is an evaluation artifact, not a hidden-label training interface. Repeatedly adjusting models after inspecting it would undermine the held-out interpretation. The verifier checks aggregate metric consistency, row membership/truth, and file integrity against the trusted baseline files in the local checkout. It does not prove that every prediction was produced by a particular fitted estimator. Receipt implementation hashes and runtime strings describe the exporter's claimed environment; they are not authenticated or compared with the verifier's current environment. Hashes are not signatures. Export is intended for an ordinary local workspace, without concurrent writers racing for the same destination.
+The audit validates inputs and the reference before replacing outputs. A file-system failure during replacement can still leave a partial report set; check the exit status.
+
+The prediction bundle exposes held-out outcomes, and a row held out under one strategy can appear in the other's training set. Use it to inspect an evaluation, not as a hidden-label training interface. Adjusting models after inspecting these outcomes would undermine their held-out status.
+
+The verifier checks aggregate metric consistency, row membership/truth, and file integrity against the trusted baseline files in the local checkout. It does not prove that a particular fitted estimator produced every prediction. Receipt implementation hashes and runtime strings describe the exporter's claimed environment; the verifier neither authenticates them nor compares them with its current environment. Hashes are not signatures. Export assumes an ordinary local workspace without concurrent writers competing for the same destination.
 
 ## Next improvements
 
