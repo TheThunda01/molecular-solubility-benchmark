@@ -34,12 +34,12 @@ Activate it with `source .venv/bin/activate` on macOS/Linux, or `.venv\Scripts\A
 ```sh
 python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
-python -m solubility_benchmark
-python -m solubility_benchmark.audit
+python -m solubility_benchmark --output reproduced-results/analysis
+python -m solubility_benchmark.audit --output reproduced-results/audit
 python -m solubility_benchmark.predictions verify examples/heldout-predictions
 ```
 
-The attributed two-column data subset is included, so these commands work offline after installation. The analysis writes `results/`; the audit writes `audit/`. To create a fresh prediction bundle, run `python -m solubility_benchmark.predictions export --output predictions-001`, then verify it with `python -m solubility_benchmark.predictions verify predictions-001`. The destination must not exist. Export refits the already-recorded configurations on their training partitions; verification does not fit anything. Neither command replaces the recorded results.
+The attributed two-column data subset is included, so these commands work offline after installation. The analysis and audit write separate directories under `reproduced-results/`, preserving the recorded `results/` and `audit/`. The audit compares assignments with the original `results/split_manifest.json`; it does not compare model scores. To create a fresh prediction bundle, run `python -m solubility_benchmark.predictions export --output predictions-001`, then verify it with `python -m solubility_benchmark.predictions verify predictions-001`. The destination must not exist. Export refits the already-recorded configurations on their training partitions; verification does not fit anything. Neither command replaces the recorded results.
 
 The optional `python scripts/rebuild_dataset.py` downloads and verifies the original pinned sources before recreating the subset. For a full numerical reproduction check that leaves the recorded results in place, run `python scripts/check_reproduction.py`.
 

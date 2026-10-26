@@ -41,10 +41,10 @@ Suppose a collaborator wants to use the same benchmark partitions in a separate 
 
 ```sh
 python scripts/check_reproduction.py
-python -m solubility_benchmark.audit
+python -m solubility_benchmark.audit --output reproduced-results/audit
 ```
 
-For the bundled input, the audit has **2,256 assignment rows**: 1,128 records under each of two strategies. Each strategy has 902 training and 226 test records. The recorded reference must match before outputs are replaced. The collaborator can join `source_data_row` to the same ordered input table and preserve the exported folds.
+For the bundled input, the audit has **2,256 assignment rows**: 1,128 records under each of two strategies. Each strategy has 902 training and 226 test records. This example writes `reproduced-results/audit/`; the file names and contract above are unchanged. The recorded reference must match before outputs are replaced. The collaborator can join `source_data_row` to the same ordered input table and preserve the exported folds.
 
 For a separate exploratory input, keep its outputs separate:
 
