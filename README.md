@@ -10,6 +10,8 @@ A prediction score depends on which compounds train and test the model. This pro
 
 The goal is to understand evaluation choices, not to design molecules or support clinical decisions. Start with the [project context](docs/project-context.md) or the [chemistry and concepts](docs/biology-and-concepts.md).
 
+In [From biological measurements to better experiments](https://github.com/TheThunda01/TheThunda01/blob/main/PROJECT_GUIDE.md), this is a supporting study of fair model evaluation. It asks how the comparison changes when related compounds stay together, helping readers examine what a prediction score can support.
+
 ## What it does
 
 - Computes nine explicit RDKit descriptors (numerical structure summaries) from SMILES (Simplified Molecular Input Line Entry System) strings, excluding the source's ESOL prediction and supplied descriptors.
