@@ -18,6 +18,7 @@ The goal is to understand evaluation choices, not to design molecules or support
 - Records data provenance, source hashes, software versions, and fixed split fingerprints.
 - Audits row-level outer roles and inner validation folds against the recorded reference, offline, without fitting a model or exporting target values.
 - Exports **frozen held-out predictions** and verifies their row identities, observed values, and six reconstructed metric rows independently of model fitting.
+- Provides an optional Plotly inspector that traces frozen prediction errors to source rows, with a split/model selector and common-axis static panels.
 
 The [audit report](audit/report.md) and [practical-use guide](docs/practical-use.md) explain how to reuse these partitions in another notebook.
 
@@ -58,9 +59,15 @@ Errors are in **log10 molar-solubility units**. Both partitions contain 902 trai
 
 ![Model error comparison](results/model_errors.png)
 
+**Figure 1. Errors under the two fixed partition rules.** Each RMSE summarizes its own test set; the partition comparison is descriptive because those sets differ.
+
 The audit exports **2,256 assignment rows**, one per source record under each strategy. Canonical-identity overlap across train/test is zero under both rules. Scaffold overlap is zero under the scaffold rule; the random rule reports its overlap. These checks describe the supplied group definitions, not every possible chemical relationship.
 
 The [prediction example](examples/heldout-predictions/README.md) contains **1,356 test-role rows**: 226 for each of six split/model pairs. Its observed values and predictions reconstruct the existing RMSE, MAE, and R² at the recorded tolerance. This is a reproducibility result, not a new performance experiment.
+
+![Frozen residuals for the three models under both split rules on common axes](docs/figures/frozen-residuals.png)
+
+**Figure 2. Inspect the sign and spread of individual errors.** Residuals are predicted minus observed log10 molar solubility. Every panel has 226 test records, and the combined display contains 405 distinct source records; records repeat across models and partly across splits. The [Plotly inspection guide](docs/prediction-inspection.md) explains the interactive source-row view and reproduces the [vector figure](docs/figures/frozen-residuals.svg) from the verified frozen predictions without fitting models. This diagnostic does not provide a new blind evaluation or confidence interval.
 
 See the [generated analysis](results/report.md), [structural similarity](results/structural_similarity.csv), and [distance/error summaries](results/distance_error_bins.csv). Different scaffold keys can still represent similar chemistry; distance bins are diagnostics, not calibrated reliability limits.
 
@@ -90,6 +97,7 @@ The [practical-use guide](docs/practical-use.md) separates implemented checks fr
 | [Practical use](docs/practical-use.md) | Worked audit use, checks, and prioritized improvements. |
 | [Literature review](docs/literature-review.md), [original search log](docs/search-log.json), and [round 2 update](docs/search-update-02.json) | Scope-specific searches, screening, and source-to-code decisions. |
 | [Verification](docs/verification.md) | Executed checks and reproduction record. |
+| [Prediction inspection](docs/prediction-inspection.md) | Optional Plotly view, source-row hover, residual convention, and reproduction. |
 
 ## Development and reuse
 
