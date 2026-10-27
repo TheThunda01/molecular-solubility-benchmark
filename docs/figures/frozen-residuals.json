@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "verification": {
+    "prediction_rows": 1356,
+    "metric_rows": 6,
+    "baseline_match": true,
+    "unique_source_records": 405,
+    "rows_per_split_model": {
+      "random/training_mean": 226,
+      "random/ridge": 226,
+      "random/random_forest": 226,
+      "scaffold/training_mean": 226,
+      "scaffold/ridge": 226,
+      "scaffold/random_forest": 226
+    }
+  },
+  "plotly_version": "7.1.0",
+  "source_sha256": {
+    "predictions.csv": "b65d2ea96af2fcf0c9eb572d12ae5f68bd73b5f4a2bd584eed7dab675ba8de98",
+    "metrics.json": "4449a854542d960e4233c3db59408055eda22c4d0328cd4c4ec78f72e67b0ff9",
+    "receipt.json": "a105262afcad7f1a76f5f502502279712478c61a99d206b35d0d168c6fd1b693"
+  },
+  "files": {
+    "residuals.csv": "ea481e669b83728bf715ab9acc3ded8e0f68fc6f3c0c990cad77daf24e8a330b",
+    "residuals.html": "9e274b63eb8e66210ca6440d3224fd4d9fcd1bc747f555fc218182c48b5d3853",
+    "residuals.png": "e9758b2483529f2d1f551c6e1c5c06b4f65164ed1cd0d8d357883e84723fe311",
+    "residuals.svg": "9595e1901391e3c5f86e9dca577c5a00d77da32f5fe55f49f295fb54c80a1b2b"
+  },
+  "residual_definition": "predicted minus observed log10 mol/L",
+  "scope": "Frozen results inspection; no model fit, tuning, new partition, uncertainty interval or external validation.",
+  "data_terms": "Delaney (2004) derived measurements: CC BY-NC 4.0; see data/LICENSE.md."
+}

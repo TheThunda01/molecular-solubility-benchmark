@@ -3,3 +3,4 @@
 *.json text eol=lf
 *.csv -text
 *.png binary
+docs/figures/*.svg -text
