@@ -11,3 +11,7 @@ The project compares evaluation choices without claiming a new best-performing s
 Solubility is a good case study because the numerical endpoint is straightforward while the underlying measurement is context-dependent. Conditions such as pH, temperature, and solid form can matter, and those details are not available for every record here. [Llompart and colleagues (2024)](https://doi.org/10.1038/s41597-024-03105-6) discuss why data quality and external evaluation remain central to useful solubility models. [Guo and colleagues (2025)](https://doi.org/10.1186/s13321-025-01039-8) also show, in a different molecular-prediction task, why different scaffold labels need not eliminate structural similarity.
 
 Start with the [results](../results/report.md), then use the [chemistry guide](biology-and-concepts.md) and [methods](methods.md) to examine their data sources, structure-based splits, training-only model selection, and limits on generalization. The [glossary](glossary.md) defines the vocabulary, and the [assumptions](assumptions.md) explain the design choices and where they may fail.
+
+## Where this fits
+
+Read this alongside the [GFP investigation](https://github.com/TheThunda01/gfp-active-learning): both examine predictions beyond closely related training examples. Solubility supplies a chemical comparison; GFP investigates measurement-selection policies. Their datasets and endpoints are separate, so the connection is a shared evaluation question.
