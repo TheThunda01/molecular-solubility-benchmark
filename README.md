@@ -1,16 +1,10 @@
 # Molecular solubility benchmark
 
-**How much does a chemical-property model's evaluation change when related structures are kept together?**
-
-This retrospective benchmark compares solubility models under two ways of partitioning the data. Its split audit records which observations train and test each model so readers can inspect and reuse the evaluation plan.
+How well can a model predict how much of a compound dissolves in water when its training set contains different chemical structures? This project compares three models on 1,128 measured solubility records from the Delaney dataset.
 
 ## Why this project
 
-A prediction score depends on which compounds train and test the model. This project uses 1,128 public measured-solubility records to compare a mean baseline, ridge regression, and a random forest. It contrasts an identity-grouped random split with a scaffold-grouped split, then examines held-out errors by distance from training descriptors.
-
-The goal is to understand evaluation choices, not to design molecules or support clinical decisions. Start with the [project context](docs/project-context.md) or the [chemistry and concepts](docs/biology-and-concepts.md).
-
-In [From biological measurements to better experiments](https://github.com/TheThunda01/TheThunda01/blob/main/PROJECT_GUIDE.md), this is a supporting study of fair model evaluation. It asks how the comparison changes when related compounds stay together, helping readers examine what a prediction score can support.
+Two molecules can have different identities and still share a scaffold, the framework formed by their rings and the links between them. In this dataset, the random forest’s error rose from 0.694 to 0.934 log10 mol/L when the split kept whole scaffolds together. Both the chemistry and the membership of the test set changed. The recorded splits let you trace which measurements contributed to each score. [Project context](docs/project-context.md) · [Chemistry and concepts](docs/biology-and-concepts.md) · [Portfolio guide](https://github.com/TheThunda01/TheThunda01/blob/main/PROJECT_GUIDE.md)
 
 ## What it does
 
@@ -61,7 +55,7 @@ Errors are in **log10 molar-solubility units**. Both partitions contain 902 trai
 
 ![Model error comparison](results/model_errors.png)
 
-**Figure 1. Errors under the two fixed partition rules.** Each RMSE summarizes its own test set; the partition comparison is descriptive because those sets differ.
+The mean-only baseline also has higher error on the scaffold test set (2.266 versus 2.088). It uses no structure descriptors, which helps illustrate how the change in test records affects this comparison. [Metric rows](results/metrics.csv) · [Split assignments](audit/report.md)
 
 The audit exports **2,256 assignment rows**, one per source record under each strategy. Canonical-identity overlap across train/test is zero under both rules. Scaffold overlap is zero under the scaffold rule; the random rule reports its overlap. These checks describe the supplied group definitions, not every possible chemical relationship.
 
@@ -69,9 +63,19 @@ The [prediction example](examples/heldout-predictions/README.md) contains **1,35
 
 ![Frozen residuals for the three models under both split rules on common axes](docs/figures/frozen-residuals.png)
 
-**Figure 2. Inspect the sign and spread of individual errors.** Residuals are predicted minus observed log10 molar solubility. Every panel has 226 test records, and the combined display contains 405 distinct source records; records repeat across models and partly across splits. The [Plotly inspection guide](docs/prediction-inspection.md) explains the interactive source-row view and reproduces the [vector figure](docs/figures/frozen-residuals.svg) from the verified frozen predictions without fitting models. This diagnostic does not provide a new blind evaluation or confidence interval.
+A residual above zero means the model predicts greater solubility than measured. For example, the random split’s mean-only model predicts −3.069 for source data row 19, whose measured value is −3.640. Its residual is approximately +0.571 log10 mol/L. Each panel contains 226 test records, with 405 distinct records across the two splits. [Frozen prediction rows](examples/heldout-predictions/predictions.csv) · [Interactive inspection guide](docs/prediction-inspection.md) · [Vector figure](docs/figures/frozen-residuals.svg)
 
 See the [generated analysis](results/report.md), [structural similarity](results/structural_similarity.csv), and [distance/error summaries](results/distance_error_bins.csv). Different scaffold keys can still represent similar chemistry; distance bins are diagnostics, not calibrated reliability limits.
+
+### How well do models trained on ring structures predict acyclic solubility?
+
+The original scaffold split placed all 317 acyclic records in training because they share the empty Murcko scaffold. A separate sensitivity analysis holds out that entire group and trains on the 811 remaining records. Model settings are selected by cross-validation within the 268 training scaffolds. The two partitions share zero canonical identities.
+
+![RMSE on 317 acyclic records, training mean 2.413, ridge 0.997 and random forest 0.820](examples/acyclic-holdout/errors.png)
+
+The forest's RMSE was **0.820 log10 mol/L** on this specific group. The original scaffold test covers different records. Each score therefore answers a different transfer question. The acyclic group pools chemically diverse compounds under one structural convention.
+
+Run `python -m solubility_benchmark.acyclic_holdout --output reproduced-results/acyclic` to recreate the chart and [scores, split fingerprints and selected settings](examples/acyclic-holdout/scores.json). All selection uses the training partition. This sensitivity analysis was added after inspection of the original benchmark.
 
 ## Practical use and limitations
 

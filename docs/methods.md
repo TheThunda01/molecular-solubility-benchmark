@@ -19,6 +19,10 @@ The analysis constructs each outer split from structure information alone, witho
 
 Both happen to contain 902 training and 226 test rows. The scaffold training side contains common large scaffold groups, while the test side is enriched for smaller groups. This is one particular extrapolation challenge, not a random sampling of future chemistry. It also changes the response distribution. A score difference cannot therefore be attributed solely to scaffold overlap.
 
+### Sensitivity analysis for acyclic records
+
+The primary scaffold rule places all records with an empty Murcko scaffold in training. An additional retrospective analysis sets that entire group aside. All 317 acyclic records form the test set. The remaining 811 records span 268 training scaffolds. The same descriptor set, model families and hyperparameter grids are used, and the inner folds keep training scaffolds together. The report records both sets of row fingerprints and checks that canonical identities never cross the split. The empty scaffold is a grouping convention that can cover diverse compounds. [Acyclic holdout scores](../examples/acyclic-holdout/scores.json) · [Error chart](../examples/acyclic-holdout/errors.png)
+
 ## Training-only model selection
 
 The mean baseline uses only training labels. Ridge uses training-fitted standardization and alpha candidates 0.1, 1, 10, and 100. The forest uses 150 trees, seed 2026, minimum leaf sizes 1 or 3, and maximum feature fractions 0.7 or 1.0. These small grids are fixed, not expanded after test inspection.

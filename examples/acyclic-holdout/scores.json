@@ -1,0 +1,36 @@
+{
+  "input_sha256": "e8865f1c10fdd2f5fb46d16075fccbaba388b85f57bebef89261750b3cbb9a77",
+  "test_rule": "empty Murcko scaffold",
+  "train_rows": 811,
+  "test_rows": 317,
+  "train_scaffolds": 268,
+  "canonical_identity_overlap": 0,
+  "train_indices_sha256": "931c930c7c83184e3ef9cbedeff3ea4557b109a2c816ab0ee9ed2ecaba4b3ee6",
+  "test_indices_sha256": "453f8e749cd896638ce8b3808917d16e9b489de027d7b5656c47796c0cf8405f",
+  "training_selected_parameters": {
+    "ridge": {
+      "model__alpha": 10.0
+    },
+    "random_forest": {
+      "model__max_features": 0.7,
+      "model__min_samples_leaf": 1
+    }
+  },
+  "scores": {
+    "training_mean": {
+      "rmse_log10_mol_l": 2.413338755148149,
+      "mae_log10_mol_l": 2.0841857075620314,
+      "r2": -0.7539684960155111
+    },
+    "ridge": {
+      "rmse_log10_mol_l": 0.996656766359208,
+      "mae_log10_mol_l": 0.7878310549860863,
+      "r2": 0.7008586472323387
+    },
+    "random_forest": {
+      "rmse_log10_mol_l": 0.8197519654744068,
+      "mae_log10_mol_l": 0.5508489085294891,
+      "r2": 0.7976281287618774
+    }
+  }
+}
