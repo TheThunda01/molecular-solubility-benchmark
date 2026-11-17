@@ -48,6 +48,16 @@ To create a fresh prediction bundle, run `python -m solubility_benchmark.predict
 
 The optional `python scripts/rebuild_dataset.py` downloads and verifies the original pinned sources before recreating the subset. For a full numerical reproduction check that leaves the recorded results in place, run `python scripts/check_reproduction.py`.
 
+## How well do ring-trained models transfer to acyclic records?
+
+The original scaffold split placed all 317 acyclic records in training because they share the empty Murcko scaffold. A separate sensitivity analysis holds out that entire group and trains on the 811 remaining records. Model settings are selected by cross-validation within the 268 training scaffolds. The two partitions share zero canonical identities.
+
+![RMSE on 317 acyclic records, training mean 2.413, ridge 0.997 and random forest 0.820](examples/acyclic-holdout/errors.png)
+
+The forest's RMSE was **0.820 log10 mol/L** on this specific group. The original scaffold test covers different records. Each score therefore answers a different transfer question. The acyclic group pools chemically diverse compounds under one structural convention.
+
+Run `python -m solubility_benchmark.acyclic_holdout --output reproduced-results/acyclic` to recreate the chart and [scores, split fingerprints and selected settings](examples/acyclic-holdout/scores.json). All selection uses the training partition. This sensitivity analysis was added after inspection of the original benchmark.
+
 ## Example results
 
 All three models had higher RMSE under the scaffold-grouped partition. Lower RMSE indicates smaller prediction errors.
